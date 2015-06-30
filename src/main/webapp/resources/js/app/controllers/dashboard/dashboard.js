@@ -3,8 +3,8 @@ angular.module('hr.dashboard', [
     'hr.dashboard.services'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-        .when('/dashboard', {
+        .when('/', {
             controller: 'DashBoardController',
-            templateUrl: 'dashboard/dashboard.html'
+            templateUrl: ''
         });
 }]);
