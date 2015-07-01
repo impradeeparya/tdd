@@ -5,6 +5,6 @@ angular.module('hr.dashboard', [
     $routeProvider
         .when('/', {
             controller: 'DashBoardController',
-            templateUrl: ''
+            templateUrl: 'views/dashboard/dashboard.html'
         });
 }]);

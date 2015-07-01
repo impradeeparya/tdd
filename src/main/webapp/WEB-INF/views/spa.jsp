@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" ng-app="hr">
 <head>
@@ -7,11 +8,11 @@
     <title>HelloRoomie</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap/bootstrap.css" />"/>
 
     <!-- theme -->
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.5/css/bootstrap-theme.css">
-    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap/bootstrap-theme.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />"/>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +23,6 @@
     <![endif]-->
 </head>
 <body>
-
 <div class="top-bar">
     <div class="container">
         <a class="" href="#/">Login</a> | <a class="" href="">SignUp</a>
@@ -53,18 +53,14 @@
 </div>
 
 
-<!-- jQuery -->
-<script src="webjars/jquery/2.1.4/jquery.js"></script>
-
 <!-- javaScript -->
-<script type="text/javascript" src="webjars/angularjs/1.4.1/angular.js"></script>
-<script type="text/javascript" src="webjars/angularjs/1.4.1/angular-route.js"></script>
-<script src="webjars/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/angularJs/angular.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/angularJs/angular-route.js" />"></script>
 
 <!-- angularJs files -->
-<script type="text/javascript" src="resources/js/app/app.js"></script>
-<script type="text/javascript" src="resources/js/app/controllers/dashboard/dashboard.js"></script>
-<script type="text/javascript" src="resources/js/app/controllers/dashboard/controllers.js"></script>
-<script type="text/javascript" src="resources/js/app/services/dashboard/services.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/dashboard/dashboard.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/dashboard/controllers.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/services/dashboard/services.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/app.js" />"></script>
 </body>
 </html>
