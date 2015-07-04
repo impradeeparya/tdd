@@ -1,6 +1,8 @@
 package in.helloroomie.controllers.common;
 
-import in.helloroomie.domain.City.CityDTO;
+import in.helloroomie.domain.city.CityDTO;
+import in.helloroomie.service.common.ICommonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,19 +20,13 @@ import java.util.List;
 @RequestMapping(value = "/common")
 public class CommonController {
 
+    @Autowired
+    private ICommonService commonService;
+
     @RequestMapping(value = "/getAllCities", method = RequestMethod.GET)
     public
     @ResponseBody
     List<CityDTO> getAllCities() {
-        CityDTO cityDTO1 = new CityDTO();
-        cityDTO1.setId(1L);
-        cityDTO1.setName("New Delhi");
-
-        CityDTO cityDTO2 = new CityDTO();
-        cityDTO2.setName("Bengaluru");
-        cityDTO2.setId(2L);
-
-        List<CityDTO> cities = new ArrayList<CityDTO>(Arrays.asList(cityDTO1, cityDTO2));
-        return cities;
+        return commonService.getAllCities();
     }
 }

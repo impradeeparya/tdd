@@ -1,4 +1,4 @@
-package in.helloroomie.domain.City;
+package in.helloroomie.domain.city;
 
 /**
  * Created by Pradeep Arya on 7/3/2015.

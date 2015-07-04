@@ -9,6 +9,7 @@
 
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
+        <hibernate.version>4.3.10.Final</hibernate.version>
     </properties>
 
     <dependencies>
@@ -32,6 +33,22 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.1.7.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.1.7.RELEASE</version>
+        </dependency>
+
+
+
+
+        <!--Javax Dependencies-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -86,6 +103,40 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.5.4</version>
         </dependency>
+
+        <!--Hibernate Dependencies-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.5.6-Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.2.Final</version>
+        </dependency>
+
+        <!--MySql Connector Dependencies-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.35</version>
+        </dependency>
+
+
 
     </dependencies>
 
