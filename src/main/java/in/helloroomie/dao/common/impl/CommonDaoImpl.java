@@ -1,11 +1,14 @@
 package in.helloroomie.dao.common.impl;
 
 import in.helloroomie.dao.common.ICommonDao;
-import in.helloroomie.domain.city.CityDTO;
+import in.helloroomie.domain.city.City;
+import in.helloroomie.domain.zone.Zone;
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,17 +17,24 @@ import java.util.List;
 
 @Repository
 public class CommonDaoImpl implements ICommonDao {
-    public List<CityDTO> getAllCities() {
-        CityDTO cityDTO1 = new CityDTO();
-        cityDTO1.setId(1L);
-        cityDTO1.setName("New Delhi");
 
-        CityDTO cityDTO2 = new CityDTO();
-        cityDTO2.setName("Bengaluru");
-        cityDTO2.setId(2L);
+    @Autowired
+    SessionFactory sessionFactory;
 
-        List<CityDTO> cities = new ArrayList<CityDTO>(Arrays.asList(cityDTO1, cityDTO2));
-        return cities;
+    public List<City> getAllCities() {
 
+        Criteria criteria = createCriteria(City.class);
+        return criteria.list();
+    }
+
+    @Override
+    public List<Zone> getCityZones(Long cityId) {
+        Criteria criteria = createCriteria(Zone.class);
+        criteria.add(Restrictions.eq("cityId", cityId));
+        return criteria.list();
+    }
+
+    private Criteria createCriteria(Class className) {
+        return sessionFactory.getCurrentSession().createCriteria(className);
     }
 }

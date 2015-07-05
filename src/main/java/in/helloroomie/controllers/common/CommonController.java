@@ -1,15 +1,15 @@
 package in.helloroomie.controllers.common;
 
-import in.helloroomie.domain.city.CityDTO;
+import in.helloroomie.domain.city.City;
+import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.service.common.ICommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -26,7 +26,14 @@ public class CommonController {
     @RequestMapping(value = "/getAllCities", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<CityDTO> getAllCities() {
+    List<City> getAllCities() {
         return commonService.getAllCities();
+    }
+
+    @RequestMapping(value = "/getCityZones", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    List<Zone> getCityZones(@RequestBody Long cityId) {
+        return commonService.getCityZones(cityId);
     }
 }

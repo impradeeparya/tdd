@@ -6,19 +6,19 @@
         <div class="city-selector col-md-4 col-md-offset-4">
 
             <div class="input-group mar-bot-10 col-md-12">
-                <select class="form-control" ng-model="city" ng-options="city as city.name for city in cities"
-                        ng-change="loadLocalities()">
+                <select class="form-control" ng-model="selectedCity" ng-options="city as city.name for city in cities"
+                        ng-change="loadZones()">
                     <option value=''>-- Select a city --</option>
                 </select>
             </div>
 
 
-            <!--<div class="input-group mar-bot-10 col-md-12" ng-show="">-->
-                <!--<select class="form-control" ng-model=""-->
-                        <!--ng-options="">-->
-                    <!--<option value=''>&#45;&#45; Select a locality &#45;&#45;</option>-->
-                <!--</select>-->
-            <!--</div>-->
+            <div class="input-group mar-bot-10 col-md-12" ng-show="true">
+                <select class="form-control" ng-model="selectedZone"
+                        ng-options="zone as zone.name for zone in zones">
+                    <option value=''>-- Select a locality --</option>
+                </select>
+            </div>
 
             <button class="btn btn-orange" ng-click="searchRoom()">
                 I WANT a Room

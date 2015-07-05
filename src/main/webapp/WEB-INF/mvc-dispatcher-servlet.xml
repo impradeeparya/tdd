@@ -49,11 +49,11 @@
     </bean>
 
 
-    <bean class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" id="sessionFactory">
+    <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="sessionFactory">
         <property name="dataSource" ref="dataSource"></property>
         <property name="annotatedClasses">
             <list>
-                <value></value>
+                <value>in.helloroomie.domain.city.City</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -67,7 +67,7 @@
 
 
     <!--Transaction Manager-->
-    <bean class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+    <bean class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           id="hibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>

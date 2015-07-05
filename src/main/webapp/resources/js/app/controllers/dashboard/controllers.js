@@ -5,8 +5,18 @@ angular.module('hr.dashboard.controller', [
     'hr.dashboard.services'
 ])
     .controller('DashBoardController', function ($scope, DashBoardServices) {
+        $scope.selectedCity = "";
+        $scope.selectedZone = "";
+
+
         DashBoardServices.getAllCities().success(function (data) {
             $scope.cities = data;
-            console.log("Cites : " + $scope.cities);
         });
+
+        $scope.loadZones = function () {
+            DashBoardServices.getCityZones($scope.selectedCity.id).success(function (data) {
+                $scope.zones = data;
+            })
+        }
+
     });

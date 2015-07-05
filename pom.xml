@@ -70,6 +70,8 @@
         </dependency>
 
 
+
+
         <!--Testing Dependencies-->
         <dependency>
             <groupId>junit</groupId>
@@ -83,6 +85,8 @@
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
         </dependency>
+
+
 
 
         <!--Jackson Dependencies-->
@@ -104,6 +108,9 @@
             <version>2.5.4</version>
         </dependency>
 
+
+
+
         <!--Hibernate Dependencies-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -113,21 +120,31 @@
 
         <dependency>
             <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>4.3.2.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
 
+
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.5.6-Final</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.12</version>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.3.2.Final</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.12</version>
         </dependency>
+
+
+
 
         <!--MySql Connector Dependencies-->
         <dependency>

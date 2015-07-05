@@ -7,4 +7,8 @@ angular.module('hr.dashboard.services', [])
         this.getAllCities = function () {
             return $http.get("common/getAllCities");
         }
+
+        this.getCityZones = function(cityId){
+            return $http.post("common/getCityZones", cityId);
+        }
     })
