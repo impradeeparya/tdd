@@ -30,7 +30,8 @@ public class CommonDaoImpl implements ICommonDao {
     @Override
     public List<Zone> getCityZones(Long cityId) {
         Criteria criteria = createCriteria(Zone.class);
-        criteria.add(Restrictions.eq("cityId", cityId));
+        criteria.createAlias("city", "c");
+        criteria.add(Restrictions.eq("c.id", cityId));
         return criteria.list();
     }
 

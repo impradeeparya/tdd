@@ -1,5 +1,7 @@
 package in.helloroomie.domain.zone;
 
+import in.helloroomie.domain.city.City;
+
 import javax.persistence.*;
 
 /**
@@ -15,9 +17,9 @@ public class Zone {
     private Long id;
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "city_id")
-    private Long cityId;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", referencedColumnName = "id")
+    private City city;
 
     public Long getId() {
         return id;
@@ -35,11 +37,11 @@ public class Zone {
         this.name = name;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public City getCityId() {
+        return city;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCityId(City city) {
+        this.city = city;
     }
 }

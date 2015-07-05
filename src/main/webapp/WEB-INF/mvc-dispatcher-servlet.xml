@@ -54,6 +54,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>in.helloroomie.domain.city.City</value>
+                <value>in.helloroomie.domain.zone.Zone</value>
             </list>
         </property>
         <property name="hibernateProperties">
