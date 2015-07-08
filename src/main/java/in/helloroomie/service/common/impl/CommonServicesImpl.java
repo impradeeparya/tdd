@@ -2,8 +2,9 @@ package in.helloroomie.service.common.impl;
 
 import in.helloroomie.dao.common.ICommonDao;
 import in.helloroomie.domain.city.City;
+import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.zone.Zone;
-import in.helloroomie.service.common.ICommonService;
+import in.helloroomie.service.common.ICommonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 
 @Service
-public class CommonServiceImpl implements ICommonService {
+public class CommonServicesImpl implements ICommonServices {
 
     @Autowired
     private ICommonDao commonDao;
@@ -30,5 +31,11 @@ public class CommonServiceImpl implements ICommonService {
     @Transactional
     public List<Zone> getCityZones(Long cityId) {
         return commonDao.getCityZones(cityId);
+    }
+
+    @Override
+    @Transactional
+    public List<Locality> getLocalityByZone(Long zoneId) {
+        return commonDao.getLocalityByZone(zoneId);
     }
 }

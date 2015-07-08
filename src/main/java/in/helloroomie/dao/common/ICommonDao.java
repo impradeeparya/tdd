@@ -1,6 +1,7 @@
 package in.helloroomie.dao.common;
 
 import in.helloroomie.domain.city.City;
+import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.zone.Zone;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface ICommonDao {
     List<City> getAllCities();
 
     List<Zone> getCityZones(Long cityId);
+
+    List<Locality> getLocalityByZone(Long zoneId);
 }

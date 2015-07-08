@@ -5,8 +5,8 @@ angular.module('hr.dashboard.controller', [
     'hr.dashboard.services'
 ])
     .controller('DashBoardController', function ($scope, $location, DashBoardServices) {
-        $scope.selectedCity = "";
-        $scope.selectedZone = "";
+        $scope.selectedCity = null;
+        $scope.selectedZone = null;
         $scope.isCitySelected = false;
 
 
@@ -15,14 +15,20 @@ angular.module('hr.dashboard.controller', [
         });
 
         $scope.loadZones = function () {
-            $scope.isCitySelected = true
+            $scope.isCitySelected = false
+            $scope.selectedZone = null;
+            $scope.zones = null;
             DashBoardServices.getCityZones($scope.selectedCity.id).success(function (data) {
                 $scope.zones = data;
+                $scope.isCitySelected = true
             })
         }
 
         $scope.searchRoom = function () {
-            $location.path('/ad/search')
+
+            if (null != $scope.selectedZone) {
+                $location.path("/ad/search").search({zoneId: $scope.selectedZone.id});
+            }
         }
 
     });

@@ -4,5 +4,6 @@
 angular
     .module('hr', [
         'ngRoute',
-        'hr.dashboard'
+        'hr.dashboard',
+        'hr.ad'
     ]);

@@ -6,7 +6,7 @@ angular.module('hr.ad', [
     'hr.ad.services'
 ]).config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-        .when('/ad/serach', {
+        .when('/ad/search', {
             controller: 'AdController',
             templateUrl: 'views/ad/ads.html'
         });

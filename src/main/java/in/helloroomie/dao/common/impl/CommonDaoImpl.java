@@ -2,6 +2,7 @@ package in.helloroomie.dao.common.impl;
 
 import in.helloroomie.dao.common.ICommonDao;
 import in.helloroomie.domain.city.City;
+import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.zone.Zone;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CommonDaoImpl implements ICommonDao {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     public List<City> getAllCities() {
 
@@ -32,6 +33,14 @@ public class CommonDaoImpl implements ICommonDao {
         Criteria criteria = createCriteria(Zone.class);
         criteria.createAlias("city", "c");
         criteria.add(Restrictions.eq("c.id", cityId));
+        return criteria.list();
+    }
+
+    @Override
+    public List<Locality> getLocalityByZone(Long zoneId) {
+        Criteria criteria = createCriteria(Locality.class);
+        criteria.createAlias("zone", "z");
+        criteria.add(Restrictions.eq("z.id", zoneId));
         return criteria.list();
     }
 

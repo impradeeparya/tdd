@@ -69,6 +69,9 @@
 <script type="text/javascript" src="<c:url value="/resources/js/app/controllers/dashboard/dashboard.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/controllers/dashboard/controllers.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/services/dashboard/services.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/ad/ad.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/ad/controller.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/services/ad/services.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/app.js" />"></script>
 </body>
 </html>

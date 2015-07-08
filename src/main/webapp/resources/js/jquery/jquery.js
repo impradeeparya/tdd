@@ -2769,7 +2769,7 @@ var rootjQuery,
 	document = window.document,
 
 	// A simple way to check for HTML strings
-	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
+	// Prioritize #id over <tag> to avoid XSS via locality.hash (#9521)
 	// Strict HTML recognition (#11290: must start with <)
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
@@ -8581,7 +8581,7 @@ jQuery.parseXML = function( data ) {
 
 
 var
-	// Document location
+	// Document locality
 	ajaxLocParts,
 	ajaxLocation,
 
@@ -8616,18 +8616,18 @@ var
 	allTypes = "*/".concat("*");
 
 // #8138, IE may throw an exception when accessing
-// a field from window.location if document.domain has been set
+// a field from window.locality if document.domain has been set
 try {
 	ajaxLocation = location.href;
 } catch( e ) {
 	// Use the href attribute of an A element
-	// since IE will modify it given document.location
+	// since IE will modify it given document.locality
 	ajaxLocation = document.createElement( "a" );
 	ajaxLocation.href = "";
 	ajaxLocation = ajaxLocation.href;
 }
 
-// Segment location into parts
+// Segment locality into parts
 ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport

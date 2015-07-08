@@ -4,7 +4,16 @@
 angular.module('hr.ad.controller', [
     'hr.ad.services'
 ])
-    .controller('AdController', function ($scope, $location, AdServices) {
+    .controller('AdController', function ($scope, $routeParams, $location, AdServices) {
+
+        $scope.adsList = null;
+        AdServices.getAllZoneAds($routeParams.zoneId).success(function (data) {
+            $scope.adsList = data;
+        })
+
+        AdServices.getAllLocalityOfZone($routeParams.zoneId).success(function (data) {
+            $scope.localities = data;
+        });
 
     });
 

@@ -50,9 +50,9 @@ function $RouteProvider() {
    * @ngdoc method
    * @name $routeProvider#when
    *
-   * @param {string} path Route path (matched against `$location.path`). If `$location.path`
+   * @param {string} path Route path (matched against `$locality.path`). If `$locality.path`
    *    contains redundant trailing slash or is missing one, the route will still match and the
-   *    `$location.path` will be updated to add or drop the trailing slash to exactly match the
+   *    `$locality.path` will be updated to add or drop the trailing slash to exactly match the
    *    route definition.
    *
    *    * `path` can contain named groups starting with a colon: e.g. `:name`. All characters up
@@ -88,7 +88,7 @@ function $RouteProvider() {
    *      If `template` is a function, it will be called with the following parameters:
    *
    *      - `{Array.<Object>}` - route parameters extracted from the current
-   *        `$location.path()` by applying the current route
+   *        `$locality.path()` by applying the current route
    *
    *    - `templateUrl` – `{string=|function()=}` – path or function that returns a path to an html
    *      template that should be used by {@link ngRoute.directive:ngView ngView}.
@@ -96,7 +96,7 @@ function $RouteProvider() {
    *      If `templateUrl` is a function, it will be called with the following parameters:
    *
    *      - `{Array.<Object>}` - route parameters extracted from the current
-   *        `$location.path()` by applying the current route
+   *        `$locality.path()` by applying the current route
    *
    *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
    *      be injected into the controller. If any of these dependencies are promises, the router
@@ -117,20 +117,20 @@ function $RouteProvider() {
    *        functions.  Use `$route.current.params` to access the new route parameters, instead.
    *
    *    - `redirectTo` – {(string|function())=} – value to update
-   *      {@link ng.$location $location} path with and trigger route redirection.
+   *      {@link ng.$location $locality} path with and trigger route redirection.
    *
    *      If `redirectTo` is a function, it will be called with the following parameters:
    *
    *      - `{Object.<string>}` - route parameters extracted from the current
-   *        `$location.path()` by applying the current route templateUrl.
-   *      - `{string}` - current `$location.path()`
-   *      - `{Object}` - current `$location.search()`
+   *        `$locality.path()` by applying the current route templateUrl.
+   *      - `{string}` - current `$locality.path()`
+   *      - `{Object}` - current `$locality.search()`
    *
    *      The custom `redirectTo` function is expected to return a string which will be used
-   *      to update `$location.path()` and `$location.search()`.
+   *      to update `$locality.path()` and `$locality.search()`.
    *
-   *    - `[reloadOnSearch=true]` - {boolean=} - reload route when only `$location.search()`
-   *      or `$location.hash()` changes.
+   *    - `[reloadOnSearch=true]` - {boolean=} - reload route when only `$locality.search()`
+   *      or `$locality.hash()` changes.
    *
    *      If the option is set to `false` and url in the browser changes, then
    *      `$routeUpdate` event is broadcasted on the root scope.
@@ -277,7 +277,7 @@ function $RouteProvider() {
      *
      * @description
      * `$route` is used for deep-linking URLs to controllers and views (HTML partials).
-     * It watches `$location.url()` and tries to map the path to an existing route definition.
+     * It watches `$locality.url()` and tries to map the path to an existing route definition.
      *
      * Requires the {@link ngRoute `ngRoute`} module to be installed.
      *
@@ -306,7 +306,7 @@ function $RouteProvider() {
      *
      *       <hr />
      *
-     *       <pre>$location.path() = {{$location.path()}}</pre>
+     *       <pre>$locality.path() = {{$locality.path()}}</pre>
      *       <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
      *       <pre>$route.current.params = {{$route.current.params}}</pre>
      *       <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
@@ -328,9 +328,9 @@ function $RouteProvider() {
      *   <file name="script.js">
      *     angular.module('ngRouteExample', ['ngRoute'])
      *
-     *      .controller('MainController', function($scope, $route, $routeParams, $location) {
+     *      .controller('MainController', function($scope, $route, $routeParams, $locality) {
      *          $scope.$route = $route;
-     *          $scope.$location = $location;
+     *          $scope.$locality = $locality;
      *          $scope.$routeParams = $routeParams;
      *      })
      *
@@ -398,7 +398,7 @@ function $RouteProvider() {
      * defined in `resolve` route property. Once  all of the dependencies are resolved
      * `$routeChangeSuccess` is fired.
      *
-     * The route change (and the `$location` change that triggered it) can be prevented
+     * The route change (and the `$locality` change that triggered it) can be prevented
      * by calling `preventDefault` method of the event. See {@link ng.$rootScope.Scope#$on}
      * for more details about event object.
      *
@@ -459,7 +459,7 @@ function $RouteProvider() {
            *
            * @description
            * Causes `$route` service to reload the current route even if
-           * {@link ng.$location $location} hasn't changed.
+           * {@link ng.$location $locality} hasn't changed.
            *
            * As a result of that, {@link ngRoute.directive:ngView ngView}
            * creates new scope and reinstantiates the controller.
@@ -481,7 +481,7 @@ function $RouteProvider() {
            * Causes `$route` service to update the current URL, replacing
            * current route parameters with those specified in `newParams`.
            * Provided property names that match the route's path segment
-           * definitions will be interpolated into the location's path, while
+           * definitions will be interpolated into the locality's path, while
            * remaining properties will be treated as query params.
            *
            * @param {!Object<string, string>} newParams mapping of URL parameter names to values
@@ -678,7 +678,7 @@ ngRouteModule.provider('$routeParams', $RouteParamsProvider);
  *
  * Requires the {@link ngRoute `ngRoute`} module to be installed.
  *
- * The route parameters are a combination of {@link ng.$location `$location`}'s
+ * The route parameters are a combination of {@link ng.$location `$locality`}'s
  * {@link ng.$location#search `search()`} and {@link ng.$location#path `path()`}.
  * The `path` parameters are extracted when the {@link ngRoute.$route `$route`} path is matched.
  *
@@ -758,7 +758,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
           </div>
           <hr />
 
-          <pre>$location.path() = {{main.$location.path()}}</pre>
+          <pre>$locality.path() = {{main.$locality.path()}}</pre>
           <pre>$route.current.templateUrl = {{main.$route.current.templateUrl}}</pre>
           <pre>$route.current.params = {{main.$route.current.params}}</pre>
           <pre>$routeParams = {{main.$routeParams}}</pre>
@@ -839,10 +839,10 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
 
               $locationProvider.html5Mode(true);
           }])
-          .controller('MainCtrl', ['$route', '$routeParams', '$location',
-            function($route, $routeParams, $location) {
+          .controller('MainCtrl', ['$route', '$routeParams', '$locality',
+            function($route, $routeParams, $locality) {
               this.$route = $route;
-              this.$location = $location;
+              this.$locality = $locality;
               this.$routeParams = $routeParams;
           }])
           .controller('BookCtrl', ['$routeParams', function($routeParams) {

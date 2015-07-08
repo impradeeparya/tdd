@@ -1,25 +1,25 @@
-package in.helloroomie.domain.zone;
+package in.helloroomie.domain.locality;
 
-import in.helloroomie.domain.city.City;
+import in.helloroomie.domain.zone.Zone;
 
 import javax.persistence.*;
 
 /**
- * Created by Pradeep Arya on 7/5/2015.
+ * Created by Pradeep Arya on 7/6/2015.
  */
 
 @Entity
-@Table(name = "zone")
-public class Zone {
+@Table(name = "locality")
+public class Locality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "city_id", referencedColumnName = "id")
-    private City city;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "zone_id", referencedColumnName = "id")
+    private Zone zone;
 
     public Long getId() {
         return id;
@@ -37,11 +37,11 @@ public class Zone {
         this.name = name;
     }
 
-    public City getCity() {
-        return city;
+    public Zone getZone() {
+        return zone;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setZone(Zone zone) {
+        this.zone = zone;
     }
 }

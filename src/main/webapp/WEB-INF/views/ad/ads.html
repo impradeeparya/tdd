@@ -1,1 +1,38 @@
-<h2>Ads</h2>
+<div class="container">
+    <div class="row">
+        <div class="input-group mar-bot-10 col-md-12">
+            <select class="form-control" ng-model="selectedLocality"
+                    ng-options="locality as locality.name for locality in localities"
+                    ng-change="">
+                <option value=''>-- Select a locality --</option>
+            </select>
+        </div>
+        <div class="col-md-4">Filters
+
+        </div>
+        <div class="col-md-8">
+            Results
+            <div class="ad-post row" ng-repeat="ad in adsList">
+                <div class="col-md-10">
+                    <h3>{{ad.title}}</h3>
+                    <span>{{ad.description}}</span>
+
+                    <p>{{ad.localityName}}, {{ad.zoneName}}, {{ad.cityName}}</p>
+
+                    <p>Posted on {{ad.postedOn}}</p>
+
+                    <p>Allowed to {{ad.allowedTo}}</p>
+                </div>
+                <div class="col-md-2">
+                    <h2>&#8377{{ad.rent}}</h2>
+
+                    <div>{{ad.room}} BHK</div>
+                    <button class="btn btn-xs btn-indigo" ng-click="contactInformationPopup(ad.advertiser)">Contact
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

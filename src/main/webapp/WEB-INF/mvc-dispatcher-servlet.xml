@@ -12,7 +12,15 @@
         http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="in.helloroomie.util.CustomObjectMapper"/>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <context:component-scan base-package="in.helloroomie"/>
     <context:property-placeholder location="resources/datasource/datasource.properties"/>
     <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
@@ -55,6 +63,9 @@
             <list>
                 <value>in.helloroomie.domain.city.City</value>
                 <value>in.helloroomie.domain.zone.Zone</value>
+                <value>in.helloroomie.domain.locality.Locality</value>
+                <value>in.helloroomie.domain.user.User</value>
+                <value>in.helloroomie.domain.ad.Ad</value>
             </list>
         </property>
         <property name="hibernateProperties">
