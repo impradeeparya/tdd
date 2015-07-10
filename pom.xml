@@ -8,8 +8,8 @@
     <name>HelloRoomie</name>
 
     <properties>
-        <spring.version>4.1.6.RELEASE</spring.version>
-        <hibernate.version>4.3.10.Final</hibernate.version>
+        <spring.version>4.0.1.RELEASE</spring.version>
+        <hibernate.version>4.3.1.Final</hibernate.version>
     </properties>
 
     <dependencies>
@@ -36,16 +36,34 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
 
+        <!--Spring Security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
 
         <!--Javax Dependencies-->
@@ -70,8 +88,6 @@
         </dependency>
 
 
-
-
         <!--Testing Dependencies-->
         <dependency>
             <groupId>junit</groupId>
@@ -85,8 +101,6 @@
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
         </dependency>
-
-
 
 
         <!--Jackson Dependencies-->
@@ -109,8 +123,6 @@
         </dependency>
 
 
-
-
         <!--Hibernate Dependencies-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -121,7 +133,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.3.2.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
@@ -144,15 +156,12 @@
         </dependency>
 
 
-
-
         <!--MySql Connector Dependencies-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.35</version>
         </dependency>
-
 
 
     </dependencies>
