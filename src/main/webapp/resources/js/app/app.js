@@ -24,7 +24,6 @@ angular
 
     })
     .run(function ($rootScope, $location, LocalStorage, UtilServices) {
-
         if ($location.path() == '/ad/post') {
             if (!LocalStorage.get('token')) {
                 $location.path('/auth/login');

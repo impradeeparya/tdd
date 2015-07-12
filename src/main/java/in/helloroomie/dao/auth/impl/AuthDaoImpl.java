@@ -30,7 +30,7 @@ public class AuthDaoImpl implements IAuthDao {
 
         if (criteria.list().size() > 0) {
             User user = (User) criteria.list().get(0);
-            user.setToken(UUID.randomUUID().toString().toUpperCase() + "-" + userName + "-" + new Date().getTime());
+            user.setToken(UUID.randomUUID().toString().toUpperCase() + "-" + userName.toUpperCase() + "-" + new Date().getTime());
             updateUserToken(user);
             return user;
         }

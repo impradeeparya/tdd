@@ -33,7 +33,7 @@ public class AuthServiceImpl implements IAuthService {
         if (null != user) {
             userDto.setIsValidUser(true);
             userDto.setUserName(StringUtils.capitalize(user.getFname()) + " " + StringUtils.capitalize(user.getLname()));
-            userDto.setUserToken(user.getEmail());
+            userDto.setUserToken(user.getToken());
         } else {
             userDto.setIsValidUser(false);
         }

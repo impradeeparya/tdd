@@ -2,14 +2,17 @@ package in.helloroomie.dao.ad.impl;
 
 import in.helloroomie.dao.ad.IAdDao;
 import in.helloroomie.domain.ad.Ad;
+import in.helloroomie.domain.user.User;
 import in.helloroomie.dto.ad.AdDto;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,8 +34,39 @@ public class AdDaoImpl implements IAdDao {
         return prepareAdDtoList(criteria.list());
     }
 
+    @Override
+    public Boolean postAd(String token, Ad ad) {
+
+        Boolean result = false;
+
+        Criteria userCriteria = createCriteria(User.class);
+        userCriteria.add(Restrictions.eq("token", token));
+        User user = (User) userCriteria.uniqueResult();
+
+        if (null != user) {
+            if (null != ad.getLocality()) {
+                ad.setUser(user);
+                Date currentDate = new Date();
+                ad.setCreatedOn(currentDate);
+                ad.setUpdatedOn(currentDate);
+                saveAd(ad);
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
+    private void saveAd(Ad ad) {
+        getCurrentSession().save(ad);
+    }
+
     private Criteria createCriteria(Class className) {
-        return sessionFactory.getCurrentSession().createCriteria(className);
+        return getCurrentSession().createCriteria(className);
+    }
+
+    private Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
     }
 
     private List<AdDto> prepareAdDtoList(List<Ad> ads) {

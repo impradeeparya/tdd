@@ -9,5 +9,9 @@ angular.module('hr.ad', [
         .when('/ad/search', {
             controller: 'AdController',
             templateUrl: 'views/ad/ads.html'
+        })
+        .when('/ad/post', {
+            controller: 'PostAdController',
+            templateUrl: 'views/ad/postAd.html'
         });
 }]);

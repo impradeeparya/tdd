@@ -21,4 +21,16 @@ angular.module('hr.util.services', [])
             return $http.get('/auth/getCurrentUser');
         }
 
+        this.getAllCities = function () {
+            return $http.get("common/getAllCities");
+        }
+
+        this.getCityZones = function (cityId) {
+            return $http.post("common/getCityZones", cityId);
+        }
+
+        this.getLocalitiesByZone = function (zoneId) {
+            return $http.post('common/getLocalityByZone', zoneId);
+        };
+
     })

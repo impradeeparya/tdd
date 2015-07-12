@@ -1,0 +1,48 @@
+<div class="jumbotraon">
+    <form name="postAdForm" novalidate ng-submit="postAd()">
+
+        <input type='text' name='title' ng-model='ad.title' placeholder='Title' required/></br>
+        <p ng-show="postAdForm.title.$invalid && !postAdForm.title.$pristine">title required.</p>
+
+        <input type='text' name='description' ng-model='ad.description' placeholder='Description' required/></br>
+        <p ng-show="postAdForm.description.$invalid && !postAdForm.description.$pristine">description required.</p>
+
+        <input type='text' name='rent' ng-model='ad.rent' placeholder='Rent' required/></br>
+        <p ng-show="postAdForm.rent.$invalid && !postAdForm.rent.$pristine">rent required.</p>
+
+        <input type='text' name='numberOfRooms' ng-model='ad.numberOfRooms' placeholder='Rooms' required/>BHK</br>
+        <p ng-show="postAdForm.numberOfRooms.$invalid && !postAdForm.numberOfRooms.$pristine">room required.</p>
+
+
+        <select ng-model="ad.allowedTo" required>
+            <option value=''>--Allowed To--</option>
+            <option value='Female'>Female</option>
+            <option value='Male'>Male</option>
+            <option value='Family'>Family</option>
+        </select></br>
+
+        <select ng-model="city" ng-options="city as city.name for city in cities" ng-change="loadZones()" required>
+            <option value=''>-- Select a city --</option>
+        </select>
+
+        <div class="input-group mar-bot-10 col-md-12" ng-show="showZone">
+            <select ng-model="zone" ng-options="zone as zone.name for zone in zones" ng-change="loadLocalities()"
+                    required>
+                <option value=''>-- Select a zone --</option>
+            </select>
+        </div>
+
+        <div class="input-group mar-bot-10 col-md-12" ng-show="showLocation">
+            <select ng-model="locality" ng-options="locality as locality.name for locality in localities" required>
+                <option value=''>-- Select a locality --</option>
+            </select>
+        </div>
+        </br>
+
+        <input type="file" name="file" file-model="myFile"/>
+
+        <button class="btn btn-indigo">
+            PostIt
+        </button>
+    </form>
+</div>

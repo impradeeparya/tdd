@@ -15,5 +15,69 @@ angular.module('hr.ad.controller', [
             $scope.localities = data;
         });
 
-    });
+    })
+    .controller('PostAdController', function ($scope, UtilServices, AdServices) {
+
+        $scope.ad = {};
+
+        $scope.city = {};
+        $scope.zone = {};
+        $scope.locality = {};
+
+        $scope.showLocation = false;
+        $scope.showZone = false;
+
+        UtilServices.getAllCities().then(function (res) {
+            $scope.cities = res.data;
+        });
+
+        $scope.loadZones = function () {
+            if (!$scope.showZone) {
+                $scope.showZone = true;
+            }
+            if ($scope.city) {
+                UtilServices.getCityZones($scope.city.id).then(function (res) {
+                    $scope.zones = res.data
+                })
+            } else {
+                $scope.zones = {};
+                $scope.showZone = false;
+            }
+            $scope.zone = {};
+            $scope.localities = {};
+            $scope.locality = {};
+            $scope.showLocation = false;
+        };
+
+        $scope.loadLocalities = function () {
+            if (!$scope.showLocation) {
+                $scope.showLocation = true;
+            }
+            if ($scope.zone) {
+                UtilServices.getLocalitiesByZone($scope.zone.id).then(function (res) {
+                    $scope.localities = res.data
+                })
+            } else {
+                $scope.localities = {};
+                $scope.showLocation = false;
+            }
+            $scope.locality = {};
+        };
+
+        /*function uploadFile(adId) {
+         var file = $scope.myFile;
+         console.log('file is ' + JSON.stringify(file));
+         var uploadUrl = "/ad/upload/" + adId;
+         fileUpload.uploadFileToUrl(file, uploadUrl);
+         };*/
+
+        $scope.postAd = function () {
+            $scope.ad.locality = $scope.locality;
+            console.log($scope.ad);
+            AdServices.postAd($scope.ad).success(function (data) {
+                console.log(data);
+            })
+        };
+
+    })
 

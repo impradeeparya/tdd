@@ -46,8 +46,8 @@
 
 <div class="navbar pad-top-10">
     <div class="container">
-        <a class="navbar-brand" href="#/ad/post"></a>
-        <a class="btn pull-right btn-orange" href="">Post ad</a>
+        <a class="navbar-brand" href="#/"></a>
+        <a class="btn pull-right btn-orange" href="#/ad/post">Post ad</a>
     </div>
 </div>
 

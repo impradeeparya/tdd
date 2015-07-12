@@ -1,5 +1,6 @@
 package in.helloroomie.dao.ad;
 
+import in.helloroomie.domain.ad.Ad;
 import in.helloroomie.dto.ad.AdDto;
 
 import java.util.List;
@@ -9,4 +10,6 @@ import java.util.List;
  */
 public interface IAdDao {
     List<AdDto> getByZoneId(Long zoneId);
+
+    public Boolean postAd(String token, Ad ad);
 }
