@@ -9,4 +9,6 @@ import in.helloroomie.dto.user.UserDto;
 public interface IAuthService {
 
     UserDto authenticateUser(User user);
+
+    Boolean signupUser(User user);
 }

@@ -35,7 +35,7 @@
     <div class="container">
         <%--<a class="" href="#/auth/login">Login</a> | <a class="" href="">SignUp</a>--%>
         <span ng-if="!currentUser">
-            <a class="" href="#/auth/login">Login</a> | <a class="" href="#/signup">SignUp</a>
+            <a class="" href="#/auth/login">Login</a> | <a class="" href="#/auth/signup">SignUp</a>
         </span>
         <span ng-if="currentUser">
             Welcome {{currentUser}} | <a class="" href="#/logout">Logout</a>

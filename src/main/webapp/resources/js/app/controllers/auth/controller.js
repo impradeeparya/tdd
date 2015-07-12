@@ -24,4 +24,17 @@ angular.module('hr.auth.controller', [
                 }
             });
         }
-    });
+    })
+    .controller('SignUpController', function ($scope, $location, AuthServices) {
+        $scope.user = {}
+
+        $scope.signUp = function () {
+            $scope.user.number = '+91' + $scope.user.number;
+            AuthServices.registerUser($scope.user).then(function (data) {
+                if (data == true) {
+                    $location.path('/');
+                }
+            });
+        };
+
+    })

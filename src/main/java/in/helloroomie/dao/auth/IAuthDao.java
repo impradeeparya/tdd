@@ -8,4 +8,6 @@ import in.helloroomie.domain.user.User;
 public interface IAuthDao {
 
     User authenticateUser(String userName, String passoword);
+
+    Boolean signupUser(User user);
 }

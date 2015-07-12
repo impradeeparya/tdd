@@ -4,6 +4,7 @@ import in.helloroomie.domain.user.User;
 import in.helloroomie.dto.user.UserDto;
 import in.helloroomie.service.auth.IAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,12 @@ public class AuthController {
     @ResponseBody
     UserDto login(@RequestBody User user) {
         return authService.authenticateUser(user);
+    }
+
+    @RequestMapping(value = "/signup", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public
+    @ResponseBody
+    Boolean signup(@RequestBody User user) {
+        return authService.signupUser(user);
     }
 }

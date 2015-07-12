@@ -23,9 +23,15 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     @Transactional
     public UserDto authenticateUser(User user) {
-        String userName = user.getUserName();
+        String userName = user.getEmail();
         String password = user.getPassword();
         return prepareUserDTO(authDao.authenticateUser(userName, password));
+    }
+
+    @Override
+    @Transactional
+    public Boolean signupUser(User user) {
+        return authDao.signupUser(user);
     }
 
     private UserDto prepareUserDTO(User user) {

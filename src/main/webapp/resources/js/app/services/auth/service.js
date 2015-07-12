@@ -8,5 +8,9 @@ angular.module('hr.auth.services', [])
         this.authenticateUser = function (user) {
             return $http.post("auth/login", user);
         }
+
+        this.registerUser = function (user) {
+            return $http.post("auth/signup", user);
+        }
     })
 

@@ -23,9 +23,22 @@ public class AuthDaoImpl implements IAuthDao {
     private SessionFactory sessionFactory;
 
     @Override
+    public Boolean signupUser(User user) {
+        Boolean result = false;
+        Criteria criteria = createCriteria(User.class);
+        criteria.add(Restrictions.eq("email", user.getEmail()));
+        Boolean isUserPresent = criteria.uniqueResult() != null ? true : false;
+        if (!isUserPresent) {
+            saveUser(user);
+            result = true;
+        }
+        return result;
+    }
+
+    @Override
     public User authenticateUser(String userName, String password) {
         Criteria criteria = createCriteria(User.class);
-        criteria.add(Restrictions.eq("userName", userName));
+        criteria.add(Restrictions.eq("email", userName));
         criteria.add(Restrictions.eq("password", password));
 
         if (criteria.list().size() > 0) {
@@ -39,6 +52,10 @@ public class AuthDaoImpl implements IAuthDao {
 
     private void updateUserToken(User user) {
         getCurrentSession().saveOrUpdate(user);
+    }
+
+    private void saveUser(User user) {
+        getCurrentSession().save(user);
     }
 
     private Criteria createCriteria(Class className) {

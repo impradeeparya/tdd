@@ -10,5 +10,9 @@ angular.module('hr.auth', [
         .when('/auth/login', {
             controller: 'AuthController',
             templateUrl: 'views/auth/login.html'
+        })
+        .when('/auth/signup', {
+            controller: 'SignUpController',
+            templateUrl: 'views/auth/signup.html'
         });
 }]);
