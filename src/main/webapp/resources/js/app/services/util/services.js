@@ -17,8 +17,8 @@ angular.module('hr.util.services', [])
         }
     })
     .service('UtilServices', function ($http) {
-        this.getCurrentUser = function (token) {
-            return $http.get('/auth/getCurrentUser');
+        this.getCurrentUser = function () {
+            return $http.get('common/getCurrentUser');
         }
 
         this.getAllCities = function () {

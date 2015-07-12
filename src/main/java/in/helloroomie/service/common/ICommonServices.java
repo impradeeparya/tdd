@@ -15,4 +15,6 @@ public interface ICommonServices {
     List<Zone> getCityZones(Long cityId);
 
     List<Locality> getLocalityByZone(Long zoneId);
+
+    String getCurrentUser(String token);
 }

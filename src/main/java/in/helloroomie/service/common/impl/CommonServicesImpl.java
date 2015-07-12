@@ -38,4 +38,10 @@ public class CommonServicesImpl implements ICommonServices {
     public List<Locality> getLocalityByZone(Long zoneId) {
         return commonDao.getLocalityByZone(zoneId);
     }
+
+    @Override
+    @Transactional
+    public String getCurrentUser(String token) {
+        return commonDao.getCurrentUser(token);
+    }
 }

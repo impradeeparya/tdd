@@ -6,10 +6,7 @@ import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.service.common.ICommonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,5 +40,12 @@ public class CommonController {
     @ResponseBody
     List<Locality> getLocalityByZone(@RequestBody Long zoneId) {
         return commonServices.getLocalityByZone(zoneId);
+    }
+
+    @RequestMapping(value = "/getCurrentUser", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getCurrentUser(@RequestHeader(value = "Authorization") String token) {
+        return commonServices.getCurrentUser(token);
     }
 }

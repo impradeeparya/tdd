@@ -24,14 +24,23 @@ angular
 
     })
     .run(function ($rootScope, $location, LocalStorage, UtilServices) {
-        if ($location.path() == '/ad/post') {
-            if (!LocalStorage.get('token')) {
-                $location.path('/auth/login');
+
+        $rootScope.$on('$routeChangeStart', function () {
+            if (LocalStorage.get('token') && !$rootScope.currentUser) {
+                UtilServices.getCurrentUser().then(function (res) {
+                    $rootScope.currentUser = res.data;
+                })
             }
-        } else if ($location.path() == '/logout') {
-            $rootScope.currentUser = null;
-            LocalStorage.remove('token');
-            $location.path('/');
-        }
+
+            if ($location.path() == '/ad/post') {
+                if (!LocalStorage.get('token')) {
+                    $location.path('/auth/login');
+                }
+            } else if ($location.path() == '/logout') {
+                $rootScope.currentUser = null;
+                LocalStorage.remove('token');
+                $location.path('/');
+            }
+        })
 
     })
