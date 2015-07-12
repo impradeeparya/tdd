@@ -33,14 +33,20 @@
 <body>
 <div class="top-bar">
     <div class="container">
-        <a class="" href="#/">Login</a> | <a class="" href="">SignUp</a>
+        <%--<a class="" href="#/auth/login">Login</a> | <a class="" href="">SignUp</a>--%>
+        <span ng-if="!currentUser">
+            <a class="" href="#/auth/login">Login</a> | <a class="" href="#/signup">SignUp</a>
+        </span>
+        <span ng-if="currentUser">
+            Welcome {{currentUser}} | <a class="" href="#/logout">Logout</a>
+        </span>
     </div>
 </div>
 
 
 <div class="navbar pad-top-10">
     <div class="container">
-        <a class="navbar-brand" href="#/"></a>
+        <a class="navbar-brand" href="#/ad/post"></a>
         <a class="btn pull-right btn-orange" href="">Post ad</a>
     </div>
 </div>
@@ -66,12 +72,17 @@
 <script type="text/javascript" src="<c:url value="/resources/js/angularJs/angular-route.js" />"></script>
 
 <!-- angularJs files -->
+<script type="text/javascript" src="<c:url value="/resources/js/app/services/util/services.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/util/util.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/controllers/dashboard/dashboard.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/controllers/dashboard/controllers.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/services/dashboard/services.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/controllers/ad/ad.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/controllers/ad/controller.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/services/ad/services.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/auth/auth.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/controllers/auth/controller.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/app/services/auth/service.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/app/app.js" />"></script>
 </body>
 </html>

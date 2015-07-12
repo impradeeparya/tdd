@@ -18,6 +18,10 @@ public class User {
     String email;
     String number;
     String password;
+    String token;
+
+    @Column(name = "user_name")
+    String userName;
 
     public Long getId() {
         return id;
@@ -65,5 +69,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

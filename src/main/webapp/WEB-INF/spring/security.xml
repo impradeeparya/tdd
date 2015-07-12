@@ -8,10 +8,10 @@
        http://www.springframework.org/schema/security/spring-security.xsd">
 
     <security:http use-expressions="true">
-        <security:intercept-url pattern="/auth/login" access="permitAll"/>
-        <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-        <security:form-login login-page="/auth/login"
-                             authentication-failure-url="/auth/login"/>
+        <security:intercept-url pattern="/notinuse" access="permitAll"/>
+        <security:intercept-url pattern="/notinuser" access="hasRole('ROLE_USER')"/>
+        <security:form-login login-page="/notinuser"
+                             authentication-failure-url="/notinuse"/>
     </security:http>
     <security:authentication-manager>
         <security:authentication-provider>
