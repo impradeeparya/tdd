@@ -7,9 +7,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -22,6 +25,11 @@ public class AuthDaoImpl implements IAuthDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    private static SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+
     @Override
     public Boolean signupUser(User user) {
         Boolean result = false;
@@ -29,10 +37,26 @@ public class AuthDaoImpl implements IAuthDao {
         criteria.add(Restrictions.eq("email", user.getEmail()));
         Boolean isUserPresent = criteria.uniqueResult() != null ? true : false;
         if (!isUserPresent) {
+            user.setPassword(generatePassword(user));
             saveUser(user);
+            sendMail(user);
             result = true;
         }
+
         return result;
+    }
+
+    private String generatePassword(User user) {
+        String pwd = UUID.randomUUID().toString();
+        return pwd.substring(pwd.length() - 6, pwd.length());
+    }
+
+    private void sendMail(User user) {
+        simpleMailMessage.setFrom("helloroomiemail@gmail.com");
+        simpleMailMessage.setTo("helloroomiemail@gmail.com");
+        simpleMailMessage.setSubject("Welcome To HelloRoomie");
+        simpleMailMessage.setText("Hello " + user.getEmail() + ",\n\nYour UserName : " + user.getEmail() + " Password : " + user.getPassword() + "\n\nCheers, \nHelloRoomie Team");
+        javaMailSender.send(simpleMailMessage);
     }
 
     @Override

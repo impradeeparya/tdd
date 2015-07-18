@@ -22,7 +22,8 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <context:component-scan base-package="in.helloroomie"/>
-    <context:property-placeholder location="resources/datasource/datasource.properties"/>
+    <context:property-placeholder
+            location="resources/datasource/datasource.properties, resources/mailconfiguration/mailconfig.properties"/>
     <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -47,7 +48,22 @@
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
     </bean>
 
+    <!--Email Configuration-->
+    <bean id="mailConfig" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${host}"/>
+        <property name="port" value="${port}"/>
+        <property name="username" value="${emailid}"/>
+        <property name="password" value="${password}"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">${mail.transport.protocol}</prop>
+                <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+                <prop key="mail.smtp.starttls.enable">${mail.smtp.starttls.enable}</prop>
+            </props>
+        </property>
+    </bean>
 
+    <!--Database Configuration-->
     <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           id="dataSource">
         <property name="driverClassName" value="${database.driver}"></property>
@@ -56,7 +72,7 @@
         <property name="password" value="${database.password}"></property>
     </bean>
 
-
+    <!--Entity Configuration-->
     <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" id="sessionFactory">
         <property name="dataSource" ref="dataSource"></property>
         <property name="annotatedClasses">
