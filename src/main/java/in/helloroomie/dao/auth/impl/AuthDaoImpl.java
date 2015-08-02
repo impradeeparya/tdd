@@ -53,7 +53,7 @@ public class AuthDaoImpl implements IAuthDao {
 
     private void sendMail(User user) {
         simpleMailMessage.setFrom("helloroomiemail@gmail.com");
-        simpleMailMessage.setTo("helloroomiemail@gmail.com");
+        simpleMailMessage.setTo(user.getEmail());
         simpleMailMessage.setSubject("Welcome To HelloRoomie");
         simpleMailMessage.setText("Hello " + user.getEmail() + ",\n\nYour UserName : " + user.getEmail() + " Password : " + user.getPassword() + "\n\nCheers, \nHelloRoomie Team");
         javaMailSender.send(simpleMailMessage);
