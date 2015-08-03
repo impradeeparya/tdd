@@ -4,14 +4,14 @@
 angular.module('hr.ad.controller', [
     'hr.ad.services'
 ])
-    .controller('AdController', function ($scope, $routeParams, $location, AdServices) {
+    .controller('AdController', function ($scope, $routeParams, $location, AdServices, UtilServices) {
 
         $scope.adsList = null;
         AdServices.getAllZoneAds($routeParams.zoneId).success(function (data) {
             $scope.adsList = data;
         })
 
-        AdServices.getAllLocalityOfZone($routeParams.zoneId).success(function (data) {
+        UtilServices.getLocalitiesByZone($routeParams.zoneId).success(function (data) {
             $scope.localities = data;
         });
 
@@ -36,7 +36,7 @@ angular.module('hr.ad.controller', [
                 $scope.showZone = true;
             }
             if ($scope.city) {
-                UtilServices.getCityZones($scope.city.id).then(function (res) {
+                UtilServices.getZonesByCity($scope.city.id).then(function (res) {
                     $scope.zones = res.data
                 })
             } else {

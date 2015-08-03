@@ -40,6 +40,10 @@ angular
                 $rootScope.currentUser = null;
                 LocalStorage.remove('token');
                 $location.path('/');
+            } else if ($location.path() == '/profile') {
+                if (!LocalStorage.get('token')) {
+                    $location.path('/auth/login');
+                }
             }
         })
 

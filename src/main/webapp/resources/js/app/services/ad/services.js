@@ -7,9 +7,7 @@ angular.module('hr.ad.services', [])
         this.getAllZoneAds = function (zoneId) {
             return $http.post("ad/getByZoneId", zoneId);
         }
-        this.getAllLocalityOfZone = function (zoneId) {
-            return $http.post("common/getLocalityByZone", zoneId);
-        }
+        
         this.postAd = function (ad) {
             return $http.post("ad/post", ad);
         }

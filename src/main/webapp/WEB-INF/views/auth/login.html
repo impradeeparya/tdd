@@ -1,8 +1,17 @@
 <div class="container">
-    <form>
-        <input type="text" ng-model="user.email" name="email" id="email"/>
-        <input type="password" ng-model="user.password" name="pwd" id="pwd"/>
-        <input type="submit" value="Login" ng-click="authenticateUser()"/>
-    </form>
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="email">Email address</label> <input
+				type="email" class="form-control" id="email" placeholder="Email"
+				ng-model="user.email" required />
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="password">Password</label> <input
+				type="password" class="form-control" id="password"
+				placeholder="Password" ng-model="user.password" required />
+		</div>
+		<button type="submit" class="btn btn-orange"
+			ng-click="authenticateUser()">Sign in</button>
+	</form>
 </div>
 

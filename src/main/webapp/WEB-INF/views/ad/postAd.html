@@ -1,48 +1,69 @@
-<div class="jumbotraon">
-    <form name="postAdForm" novalidate ng-submit="postAd()">
+<div class="jumbotraon col-md-4 col-md-offset-4">
+	<form name="postAdForm" ng-submit="postAd()">
+		<div class="form-group">
+			<label class="sr-only" for="title">Title</label> <input type="text"
+				class="form-control" id="title" ng-model="ad.title"
+				placeholder="Title" required>
+		</div>
 
-        <input type='text' name='title' ng-model='ad.title' placeholder='Title' required/></br>
-        <p ng-show="postAdForm.title.$invalid && !postAdForm.title.$pristine">title required.</p>
+		<div class="form-group">
+			<label class="sr-only" for="description">Title</label> <input
+				type="text" class="form-control" id="description"
+				ng-model="ad.description" placeholder="Description" required>
+		</div>
 
-        <input type='text' name='description' ng-model='ad.description' placeholder='Description' required/></br>
-        <p ng-show="postAdForm.description.$invalid && !postAdForm.description.$pristine">description required.</p>
+		<div class="form-group">
+			<label class="sr-only" for="rent">Rent</label> <input type="text"
+				class="form-control" id="rent" ng-model="ad.rent" placeholder="Rent"
+				required>
+		</div>
 
-        <input type='text' name='rent' ng-model='ad.rent' placeholder='Rent' required/></br>
-        <p ng-show="postAdForm.rent.$invalid && !postAdForm.rent.$pristine">rent required.</p>
+		<div class="form-group">
+			<label class="sr-only" for="numberOfRooms">BHK</label> <input
+				type="number" class="form-control" id="numberOfRooms"
+				ng-model="ad.numberOfRooms" placeholder="BHK" required min="1"
+				max="5">
+		</div>
 
-        <input type='text' name='numberOfRooms' ng-model='ad.numberOfRooms' placeholder='Rooms' required/>BHK</br>
-        <p ng-show="postAdForm.numberOfRooms.$invalid && !postAdForm.numberOfRooms.$pristine">room required.</p>
+		<div class="form-group">
+			<select class="form-control" ng-model="ad.allowedTo" required>
+				<option value=''>--Allowed To--</option>
+				<option value='Female'>Female</option>
+				<option value='Male'>Male</option>
+				<option value='Family'>Family</option>
+			</select>
+		</div>
 
+		<div class="form-group">
+			<select class="form-control" ng-model="city"
+				ng-options="city as city.name for city in cities"
+				ng-change="loadZones()" required>
+				<option value=''>-- Select a city --</option>
+			</select>
+		</div>
 
-        <select ng-model="ad.allowedTo" required>
-            <option value=''>--Allowed To--</option>
-            <option value='Female'>Female</option>
-            <option value='Male'>Male</option>
-            <option value='Family'>Family</option>
-        </select></br>
+		<div class="form-group" ng-show="showZone">
+			<select class="form-control" ng-model="zone"
+				ng-options="zone as zone.name for zone in zones"
+				ng-change="loadLocalities()" required>
+				<option value=''>-- Select a zone --</option>
+			</select>
+		</div>
 
-        <select ng-model="city" ng-options="city as city.name for city in cities" ng-change="loadZones()" required>
-            <option value=''>-- Select a city --</option>
-        </select>
+		<div class="form-group" ng-show="showLocation">
+			<select class="form-control" ng-model="locality"
+				ng-options="locality as locality.name for locality in localities"
+				required>
+				<option value=''>-- Select a locality --</option>
+			</select>
+		</div>
 
-        <div class="input-group mar-bot-10 col-md-12" ng-show="showZone">
-            <select ng-model="zone" ng-options="zone as zone.name for zone in zones" ng-change="loadLocalities()"
-                    required>
-                <option value=''>-- Select a zone --</option>
-            </select>
-        </div>
+		<div class="form-group">
+			<label class="sr-only" for="file">Room Image</label> <input
+				type="file" class="form-control" id="file" file-model="myFile"
+				placeholder="Room Images" required>
+		</div>
 
-        <div class="input-group mar-bot-10 col-md-12" ng-show="showLocation">
-            <select ng-model="locality" ng-options="locality as locality.name for locality in localities" required>
-                <option value=''>-- Select a locality --</option>
-            </select>
-        </div>
-        </br>
-
-        <input type="file" name="file" file-model="myFile"/>
-
-        <button class="btn btn-indigo">
-            PostIt
-        </button>
-    </form>
+		<button class="btn btn-indigo pull-right">PostIt</button>
+	</form>
 </div>

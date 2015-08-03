@@ -1,28 +1,26 @@
 <div class="jumbotraon">
-    <form name="signUpForm" novalidate ng-submit="signUp()">
-        <input type="text" name="fname" ng-model="user.fname" placeholder="First Name" required ng-minlength="3"
-               ng-maxlength="12"/>
-
-        <p ng-show="signUpForm.fname.$invalid && !signUpForm.fname.$pristine">first name required.</p>
-
-        <input type="text" name="lname" ng-model="user.lname" placeholder="Last Name" required ng-minlength="3"
-               ng-maxlength="12"/>
-
-        <p ng-show="signUpForm.lname.$invalid && !signUpForm.lname.$pristine">last name required.</p>
-
-        <input type="email" name="email" ng-model="user.email" placeholder="EmailId" required/>
-
-        <p ng-show="signUpForm.email.$invalid && !signUpForm.email.$pristine">email required.</p>
-
-        <input type="text" name="number" ng-model="user.number" placeholder="Contact Number" required ng-minlength="10"
-               ng-maxlength="10"/>
-
-        <p ng-show="signUpForm.number.$invalid && !signUpForm.number.$pristine">contact number required.</p>
-
-        <input type="password" name="password" ng-model="user.password" placeholder="Password"/>
-
-        <p ng-show="signUpForm.password.$invalid && !signUpForm.password.$pristine">password required.</p>
-
-        <button class="btn btn-info" ng-disabled="signUpForm.$invalid">SignUp</button>
-    </form>
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="fname">First Name</label> <input
+				type="text" class="form-control" id="fname" ng-model="user.fname"
+				placeholder="First Name" required>
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="lname">Last Name</label> <input
+				type="text" class="form-control" id="lname" ng-model="user.lname"
+				placeholder="Last Name" required>
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="email">Email address</label> <input
+				type="email" class="form-control" id="email" placeholder="Email"
+				ng-model="user.email" required>
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="contactNumber">Contact Number</label> <input
+				type="text" class="form-control" id="contactNumber"
+				ng-model="user.number" placeholder="Contact Number" required>
+		</div>
+		<button type="submit" class="btn btn-orange" ng-click="signUp()">Sign
+			Up</button>
+	</form>
 </div>

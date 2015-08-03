@@ -4,13 +4,13 @@
 angular.module('hr.dashboard.controller', [
     'hr.dashboard.services'
 ])
-    .controller('DashBoardController', function ($scope, $location, DashBoardServices) {
+    .controller('DashBoardController', function ($scope, $location, DashBoardServices, UtilServices) {
         $scope.selectedCity = null;
         $scope.selectedZone = null;
         $scope.isCitySelected = false;
 
 
-        DashBoardServices.getAllCities().success(function (data) {
+        UtilServices.getAllCities().success(function (data) {
             $scope.cities = data;
         });
 
@@ -18,7 +18,7 @@ angular.module('hr.dashboard.controller', [
             $scope.isCitySelected = false
             $scope.selectedZone = null;
             $scope.zones = null;
-            DashBoardServices.getCityZones($scope.selectedCity.id).success(function (data) {
+            UtilServices.getZonesByCity($scope.selectedCity.id).success(function (data) {
                 $scope.zones = data;
                 $scope.isCitySelected = true
             })

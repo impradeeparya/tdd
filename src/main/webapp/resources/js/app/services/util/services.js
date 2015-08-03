@@ -25,12 +25,12 @@ angular.module('hr.util.services', [])
             return $http.get("common/getAllCities");
         }
 
-        this.getCityZones = function (cityId) {
+        this.getZonesByCity = function (cityId) {
             return $http.post("common/getCityZones", cityId);
         }
 
         this.getLocalitiesByZone = function (zoneId) {
             return $http.post('common/getLocalityByZone', zoneId);
-        };
+        }
 
     })
