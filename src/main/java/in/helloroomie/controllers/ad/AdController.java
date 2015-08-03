@@ -23,21 +23,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/ad")
 public class AdController {
 
-    @Autowired
-    private IAdServices adServices;
+	@Autowired
+	private IAdServices adServices;
 
-    @RequestMapping(value = "/getByZoneId", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    List<AdDto> getByZoneId(@RequestBody Long zoneId) {
-        return adServices.getByZoneId(zoneId);
-    }
+	@RequestMapping(value = "/getByZoneId", method = RequestMethod.POST)
+	public @ResponseBody List<AdDto> getByZoneId(@RequestBody Long zoneId) {
+		return adServices.getByZoneId(zoneId);
+	}
 
-    @RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public
-    @ResponseBody
-    Boolean postAd(@RequestHeader("Authorization") String token, @RequestBody Ad ad) {
-        return adServices.postAd(token, ad);
-    }
+	@RequestMapping(value = "/getByCityId", method = RequestMethod.POST)
+	public @ResponseBody List<AdDto> getByCityId(@RequestBody Long cityId) {
+		return adServices.getByCityId(cityId);
+	}
+
+	@RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Boolean postAd(
+			@RequestHeader("Authorization") String token, @RequestBody Ad ad) {
+		return adServices.postAd(token, ad);
+	}
 
 }

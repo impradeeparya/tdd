@@ -21,40 +21,49 @@ import java.util.List;
 @Repository
 public class CommonDaoImpl implements ICommonDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	@Autowired
+	private SessionFactory sessionFactory;
 
-    public List<City> getAllCities() {
+	public List<City> getAllCities() {
 
-        Criteria criteria = createCriteria(City.class);
-        return criteria.list();
-    }
+		Criteria criteria = createCriteria(City.class);
+		return criteria.list();
+	}
 
-    @Override
-    public List<Zone> getCityZones(Long cityId) {
-        Criteria criteria = createCriteria(Zone.class);
-        criteria.createAlias("city", "c");
-        criteria.add(Restrictions.eq("c.id", cityId));
-        return criteria.list();
-    }
+	@Override
+	public List<Zone> getZonesByCity(Long cityId) {
+		Criteria criteria = createCriteria(Zone.class);
+		criteria.createAlias("city", "c");
+		criteria.add(Restrictions.eq("c.id", cityId));
+		return criteria.list();
+	}
 
-    @Override
-    public List<Locality> getLocalityByZone(Long zoneId) {
-        Criteria criteria = createCriteria(Locality.class);
-        criteria.createAlias("zone", "z");
-        criteria.add(Restrictions.eq("z.id", zoneId));
-        return criteria.list();
-    }
+	@Override
+	public List<Locality> getLocalityByZone(Long zoneId) {
+		Criteria criteria = createCriteria(Locality.class);
+		criteria.createAlias("zone", "z");
+		criteria.add(Restrictions.eq("z.id", zoneId));
+		return criteria.list();
+	}
 
-    @Override
-    public String getCurrentUser(String token) {
-        Criteria userCriteria = createCriteria(User.class);
-        userCriteria.add(Restrictions.eq("token", token));
-        User user = (User) userCriteria.uniqueResult();
-        return StringUtils.capitalize(user.getFname()) + " " + StringUtils.capitalize(user.getLname());
-    }
+	@Override
+	public List<Locality> getLocalityByCity(Long cityId) {
+		Criteria criteria = createCriteria(Locality.class);
+		criteria.createAlias("zone", "z");
+		criteria.add(Restrictions.eq("z.city.id", cityId));
+		return criteria.list();
+	}
 
-    private Criteria createCriteria(Class className) {
-        return sessionFactory.getCurrentSession().createCriteria(className);
-    }
+	@Override
+	public String getCurrentUser(String token) {
+		Criteria userCriteria = createCriteria(User.class);
+		userCriteria.add(Restrictions.eq("token", token));
+		User user = (User) userCriteria.uniqueResult();
+		return StringUtils.capitalize(user.getFname()) + " "
+				+ StringUtils.capitalize(user.getLname());
+	}
+
+	private Criteria createCriteria(Class className) {
+		return sessionFactory.getCurrentSession().createCriteria(className);
+	}
 }

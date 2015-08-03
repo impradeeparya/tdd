@@ -18,34 +18,34 @@ import java.util.List;
 @RequestMapping(value = "/common")
 public class CommonController {
 
-    @Autowired
-    private ICommonServices commonServices;
+	@Autowired
+	private ICommonServices commonServices;
 
-    @RequestMapping(value = "/getAllCities", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    List<City> getAllCities() {
-        return commonServices.getAllCities();
-    }
+	@RequestMapping(value = "/getAllCities", method = RequestMethod.GET)
+	public @ResponseBody List<City> getAllCities() {
+		return commonServices.getAllCities();
+	}
 
-    @RequestMapping(value = "/getCityZones", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    List<Zone> getCityZones(@RequestBody Long zoneId) {
-        return commonServices.getCityZones(zoneId);
-    }
+	@RequestMapping(value = "/getZonesByCity", method = RequestMethod.POST)
+	public @ResponseBody List<Zone> getZonesByCity(@RequestBody Long zoneId) {
+		return commonServices.getZonesByCity(zoneId);
+	}
 
-    @RequestMapping(value = "/getLocalityByZone", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    List<Locality> getLocalityByZone(@RequestBody Long zoneId) {
-        return commonServices.getLocalityByZone(zoneId);
-    }
+	@RequestMapping(value = "/getLocalityByZone", method = RequestMethod.POST)
+	public @ResponseBody List<Locality> getLocalityByZone(
+			@RequestBody Long zoneId) {
+		return commonServices.getLocalityByZone(zoneId);
+	}
 
-    @RequestMapping(value = "/getCurrentUser", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    String getCurrentUser(@RequestHeader(value = "Authorization") String token) {
-        return commonServices.getCurrentUser(token);
-    }
+	@RequestMapping(value = "/getLocalityByCity", method = RequestMethod.POST)
+	public @ResponseBody List<Locality> getLocalityByCity(
+			@RequestBody Long cityId) {
+		return commonServices.getLocalityByCity(cityId);
+	}
+
+	@RequestMapping(value = "/getCurrentUser", method = RequestMethod.GET)
+	public @ResponseBody String getCurrentUser(
+			@RequestHeader(value = "Authorization") String token) {
+		return commonServices.getCurrentUser(token);
+	}
 }

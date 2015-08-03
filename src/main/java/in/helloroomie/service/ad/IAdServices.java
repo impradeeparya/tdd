@@ -9,7 +9,9 @@ import java.util.List;
  * Created by Pradeep Arya on 7/6/2015.
  */
 public interface IAdServices {
-    List<AdDto> getByZoneId(Long zoneId);
+	List<AdDto> getByZoneId(Long zoneId);
 
-    Boolean postAd(String token, Ad ad);
+	List<AdDto> getByCityId(Long cityId);
+
+	Boolean postAd(String token, Ad ad);
 }

@@ -10,11 +10,13 @@ import java.util.List;
  * Created by Pradeep Arya on 7/3/2015.
  */
 public interface ICommonServices {
-    List<City> getAllCities();
+	List<City> getAllCities();
 
-    List<Zone> getCityZones(Long cityId);
+	List<Zone> getZonesByCity(Long cityId);
 
-    List<Locality> getLocalityByZone(Long zoneId);
+	List<Locality> getLocalityByZone(Long zoneId);
+	
+	List<Locality> getLocalityByCity(Long cityId);
 
-    String getCurrentUser(String token);
+	String getCurrentUser(String token);
 }
