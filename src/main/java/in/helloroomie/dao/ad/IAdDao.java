@@ -14,5 +14,7 @@ public interface IAdDao {
 
 	List<AdDto> getByCityId(List<Zone> zones);
 
+	List<AdDto> getCurrentUserAds(Long userId);
+
 	public Boolean postAd(String token, Ad ad);
 }

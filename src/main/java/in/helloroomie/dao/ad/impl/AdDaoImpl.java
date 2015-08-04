@@ -97,4 +97,12 @@ public class AdDaoImpl implements IAdDao {
 		return adDtoList;
 	}
 
+	@Override
+	public List<AdDto> getCurrentUserAds(Long userId) {
+		Criteria criteria = createCriteria(Ad.class);
+		criteria.createAlias("user", "u");
+		criteria.add(Restrictions.eq("u.id", userId));
+		return prepareAdDtoList(criteria.list());
+	}
+
 }

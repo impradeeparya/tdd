@@ -37,4 +37,7 @@ angular.module('hr.dashboard.controller', [ 'hr.dashboard.services' ])
 						}
 					}
 
+					$scope.offerRoom = function() {
+					}
+
 				});

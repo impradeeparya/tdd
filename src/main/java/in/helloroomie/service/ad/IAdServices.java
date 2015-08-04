@@ -13,5 +13,7 @@ public interface IAdServices {
 
 	List<AdDto> getByCityId(Long cityId);
 
+	List<AdDto> getCurrentUserAds();
+
 	Boolean postAd(String token, Ad ad);
 }

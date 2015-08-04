@@ -1,82 +1,82 @@
 body {
-    font-family: "Open Sans"
+	font-family: "Open Sans"
 }
 
 h3 {
-    color: #f9871e;
-    font-size: 15px;
-    font-weight: bold;
+	color: #f9871e;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .ad-post {
-    background-color: #eeffdf;
-    margin-bottom: 10px;
+	background-color: #eeffdf;
+	margin-bottom: 10px;
 }
 
 .navbar-brand {
-    background: url("../images/logo/logo.png") no-repeat;
-    width: 212px;
-    height: 30px;
+	background: url("../images/logo/logo.png") no-repeat;
+	width: 212px;
+	height: 30px;
 }
 
 .btn-orange {
-    background-color: #f9871e;
-    color: #fff;
-    font-weight: normal;
+	background-color: #f9871e;
+	color: #fff;
+	font-weight: normal;
 }
 
 .btn-orange:hover {
-    font-weight: bold;
-    color: #fff;
+	font-weight: bold;
+	color: #fff;
 }
 
 .btn-indigo {
-    background-color: #6551a2;
-    color: #fff;
-    font-weight: normal;
+	background-color: #6551a2;
+	color: #fff;
+	font-weight: normal;
 }
 
 .btn-indigo:hover {
-    font-weight: bold;
-    color: #fff;
+	font-weight: bold;
+	color: #fff;
 }
 
 .jumbotron {
-    background-color: #bedda2;
+	background-color: #bedda2;
 }
 
 .pad-top-10 {
-    padding-top: 10px;
+	padding-top: 10px;
 }
 
 .mar-bot-10 {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .city-selector {
-    background-color: #fff;
-    border: 1px solid #eee;
-    padding: 20px;
+	background-color: #fff;
+	border: 1px solid #eee;
+	padding: 20px;
 }
 
 .top-bar {
-    background-color: #656161;
-    color: #fff;
-    text-align: right;
-    padding: 3px;
+	background-color: #656161;
+	color: #fff;
+	text-align: right;
+	padding: 3px;
 }
 
 .top-bar a {
-    color: #fff;
-    font-size: 12px;
-    cursor: pointer;
+	color: #fff;
+	font-size: 12px;
+	cursor: pointer;
 }
 
 .clear {
-    clear: both;
+	clear: both;
 }
 
 .navbar {
-    min-height: 0;
-    margin-bottom: 10px;
+	min-height: 0;
+	margin-bottom: 10px;
 }

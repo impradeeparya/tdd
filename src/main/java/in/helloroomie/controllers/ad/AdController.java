@@ -42,4 +42,9 @@ public class AdController {
 		return adServices.postAd(token, ad);
 	}
 
+	@RequestMapping(value = "/getCurrentUserAds", method = RequestMethod.GET)
+	public @ResponseBody List<AdDto> getCurrentUserAds() {
+		return adServices.getCurrentUserAds();
+	}
+
 }

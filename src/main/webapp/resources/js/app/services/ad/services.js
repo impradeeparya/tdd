@@ -14,4 +14,8 @@ angular.module('hr.ad.services', []).service('AdServices', function($http) {
 	this.postAd = function(ad) {
 		return $http.post("ad/post", ad);
 	}
+
+	this.getCurrentUserAds = function() {
+		return $http.get("ad/getCurrentUserAds");
+	}
 })

@@ -5,6 +5,7 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 		'AdController',
 		function($scope, $routeParams, $location, AdServices, UtilServices) {
 			$scope.adsList = null;
+			$scope.myAds = null;
 			if ($routeParams.zoneId) {
 				AdServices.getAllZoneAds($routeParams.zoneId).success(
 						function(data) {
@@ -28,6 +29,10 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 							$scope.localities = data;
 						});
 			}
+
+			AdServices.getCurrentUserAds().success(function(data) {
+				$scope.myAds = data;
+			})
 
 		}).controller(
 		'PostAdController',

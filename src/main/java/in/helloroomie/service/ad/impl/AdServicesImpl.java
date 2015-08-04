@@ -45,4 +45,10 @@ public class AdServicesImpl implements IAdServices {
 	public Boolean postAd(String token, Ad ad) {
 		return adDao.postAd(token, ad);
 	}
+
+	@Override
+	public List<AdDto> getCurrentUserAds() {
+		
+		return adDao.getCurrentUserAds();
+	}
 }

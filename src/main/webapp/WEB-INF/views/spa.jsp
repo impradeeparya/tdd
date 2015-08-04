@@ -32,15 +32,16 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
 </head>
 <body>
 	<div class="top-bar">
 		<div class="container">
-			<%--<a class="" href="#/auth/login">Login</a> | <a class="" href="">SignUp</a>--%>
 			<span ng-if="!currentUser"> <a class="" href="#/auth/login">Login</a>
 				| <a class="" href="#/auth/signup">SignUp</a>
 			</span> <span ng-if="currentUser"> Welcome {{currentUser}} | <a
-				class="" href="#/logout">Logout</a> | <a class="" href="#/profile">Profile</a>
+				class="" href="#/logout">Logout</a>
 			</span>
 		</div>
 	</div>
@@ -48,8 +49,23 @@
 
 	<div class="navbar pad-top-10">
 		<div class="container">
-			<a class="navbar-brand" href="#/"></a> <a
-				class="btn pull-right btn-orange" href="#/ad/post">Post ad</a>
+			<a class="navbar-brand" href="#/"></a> <span ng-if="currentUser">
+				<div class="btn-group pull-right">
+					<button type="button" class="btn btn-indigo">My Account</button>
+					<button type="button" id="myAccount"
+						class="btn btn-indigo dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">
+						<span class="caret"></span> <span class="sr-only">Toggle
+							Dropdown</span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#/profile">Profile</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#/ad/post">Post Ads</a></li>
+						<li><a href="#/ad/my">My Ads</a></li>
+					</ul>
+				</div>
+			</span>
 		</div>
 	</div>
 
@@ -70,6 +86,12 @@
 
 
 	<!-- javaScript -->
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery/jquery.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/main.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/bootstrap/dropdown.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/angularJs/angular.js" />"></script>
 	<script type="text/javascript"
