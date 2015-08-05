@@ -6,16 +6,16 @@ import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.dto.ad.AdDto;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Pradeep Arya on 7/6/2015.
@@ -69,8 +69,36 @@ public class AdDaoImpl implements IAdDao {
 		return result;
 	}
 
+	@Override
+	public List<AdDto> getCurrentUserAds(Long userId) {
+		Criteria criteria = createCriteria(Ad.class);
+		criteria.createAlias("user", "u");
+		criteria.add(Restrictions.eq("u.id", userId));
+		return prepareAdDtoList(criteria.list());
+	}
+
+	@Override
+	public Boolean updateAdStatus(Long adId) {
+		Criteria criteria = createCriteria(Ad.class);
+		criteria.add(Restrictions.eq("id", adId));
+		Ad ad = (Ad) criteria.uniqueResult();
+		if (null != ad) {
+			if (ad.getIsActive()) {
+				ad.setIsActive(false);
+			} else {
+				ad.setIsActive(true);
+			}
+		}
+		updateAd(ad);
+		return true;
+	}
+
 	private void saveAd(Ad ad) {
 		getCurrentSession().save(ad);
+	}
+
+	private void updateAd(Ad ad) {
+		getCurrentSession().saveOrUpdate(ad);
 	}
 
 	private Criteria createCriteria(Class className) {
@@ -86,6 +114,7 @@ public class AdDaoImpl implements IAdDao {
 
 		for (Ad ad : ads) {
 			AdDto adDto = new AdDto();
+			adDto.setId(ad.getId());
 			adDto.setTitle(ad.getTitle());
 			adDto.setDescription(ad.getDescription());
 			adDto.setLocalityName(ad.getLocality().getName());
@@ -99,14 +128,6 @@ public class AdDaoImpl implements IAdDao {
 			adDtoList.add(adDto);
 		}
 		return adDtoList;
-	}
-
-	@Override
-	public List<AdDto> getCurrentUserAds(Long userId) {
-		Criteria criteria = createCriteria(Ad.class);
-		criteria.createAlias("user", "u");
-		criteria.add(Restrictions.eq("u.id", userId));
-		return prepareAdDtoList(criteria.list());
 	}
 
 }

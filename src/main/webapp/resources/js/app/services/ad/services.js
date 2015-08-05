@@ -18,4 +18,8 @@ angular.module('hr.ad.services', []).service('AdServices', function($http) {
 	this.getCurrentUserAds = function() {
 		return $http.get("ad/getCurrentUserAds");
 	}
+
+	this.updateAdStatus = function(adId) {
+		return $http.post("ad/updateAdStatus", adId);
+	}
 })

@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class AdDto {
 
+	Long id;
 	String title;
 	String description;
 	String localityName;
@@ -96,6 +97,14 @@ public class AdDto {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

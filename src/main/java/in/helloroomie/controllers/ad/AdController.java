@@ -48,4 +48,9 @@ public class AdController {
 		return adServices.getCurrentUserAds(token);
 	}
 
+	@RequestMapping(value = "/updateAdStatus", method = RequestMethod.POST)
+	public @ResponseBody Boolean updateAdStatus(@RequestBody Long adId) {
+		return adServices.updateAdStatus(adId);
+	}
+
 }

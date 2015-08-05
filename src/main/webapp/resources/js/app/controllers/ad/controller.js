@@ -29,10 +29,20 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 							$scope.localities = data;
 						});
 			}
+			currentUserAds();
+			$scope.updateAdStatus = function(adId) {
+				AdServices.updateAdStatus(adId).success(function(res) {
+					if (true == res) {
+						currentUserAds();
+					}
+				});
+			}
 
-			AdServices.getCurrentUserAds().success(function(data) {
-				$scope.myAds = data;
-			})
+			function currentUserAds() {
+				AdServices.getCurrentUserAds().success(function(data) {
+					$scope.myAds = data;
+				})
+			}
 
 		}).controller(
 		'PostAdController',

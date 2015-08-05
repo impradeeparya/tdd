@@ -53,4 +53,10 @@ public class AdServicesImpl implements IAdServices {
 		User user = commonDao.getCurrentUser(token);
 		return adDao.getCurrentUserAds(user.getId());
 	}
+
+	@Override
+	@Transactional
+	public Boolean updateAdStatus(Long adId) {
+		return adDao.updateAdStatus(adId);
+	}
 }

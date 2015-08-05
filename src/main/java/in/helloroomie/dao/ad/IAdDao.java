@@ -16,5 +16,7 @@ public interface IAdDao {
 
 	List<AdDto> getCurrentUserAds(Long userId);
 
-	public Boolean postAd(String token, Ad ad);
+	Boolean postAd(String token, Ad ad);
+
+	Boolean updateAdStatus(Long adId);
 }
