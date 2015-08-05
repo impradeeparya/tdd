@@ -3,6 +3,7 @@ package in.helloroomie.service.ad.impl;
 import in.helloroomie.dao.ad.IAdDao;
 import in.helloroomie.dao.common.ICommonDao;
 import in.helloroomie.domain.ad.Ad;
+import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.dto.ad.AdDto;
 import in.helloroomie.service.ad.IAdServices;
@@ -47,8 +48,9 @@ public class AdServicesImpl implements IAdServices {
 	}
 
 	@Override
-	public List<AdDto> getCurrentUserAds() {
-		
-		return adDao.getCurrentUserAds();
+	@Transactional
+	public List<AdDto> getCurrentUserAds(String token) {
+		User user = commonDao.getCurrentUser(token);
+		return adDao.getCurrentUserAds(user.getId());
 	}
 }

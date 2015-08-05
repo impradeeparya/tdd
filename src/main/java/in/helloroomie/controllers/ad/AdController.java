@@ -43,8 +43,9 @@ public class AdController {
 	}
 
 	@RequestMapping(value = "/getCurrentUserAds", method = RequestMethod.GET)
-	public @ResponseBody List<AdDto> getCurrentUserAds() {
-		return adServices.getCurrentUserAds();
+	public @ResponseBody List<AdDto> getCurrentUserAds(
+			@RequestHeader("Authorization") String token) {
+		return adServices.getCurrentUserAds(token);
 	}
 
 }

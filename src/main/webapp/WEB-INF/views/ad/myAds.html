@@ -17,8 +17,9 @@
 				<h2>&#8377{{ad.rent}}</h2>
 
 				<div>{{ad.room}} BHK</div>
-				<button class="btn btn-xs btn-indigo"
-					ng-click="contactInformationPopup(ad.advertiser)">Contact
+				<button class="btn btn-xs btn-indigo">
+					<span ng-show="{{ad.isActive}}">Deactivate</span> <span
+						ng-hide="{{ad.isActive}}">Activate</span>
 				</button>
 			</div>
 		</div>

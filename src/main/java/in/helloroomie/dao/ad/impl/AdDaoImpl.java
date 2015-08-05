@@ -32,6 +32,7 @@ public class AdDaoImpl implements IAdDao {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.createAlias("locality", "l");
 		criteria.add(Restrictions.eq("l.zone.id", zoneId));
+		criteria.add(Restrictions.eq("isActive", true));
 		return prepareAdDtoList(criteria.list());
 	}
 
@@ -40,6 +41,7 @@ public class AdDaoImpl implements IAdDao {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.createAlias("locality", "l");
 		criteria.add(Restrictions.in("l.zone", zones));
+		criteria.add(Restrictions.eq("isActive", true));
 		return prepareAdDtoList(criteria.list());
 	}
 
@@ -58,6 +60,7 @@ public class AdDaoImpl implements IAdDao {
 				Date currentDate = new Date();
 				ad.setCreatedOn(currentDate);
 				ad.setUpdatedOn(currentDate);
+				ad.setIsActive(true);
 				saveAd(ad);
 				result = true;
 			}
@@ -92,6 +95,7 @@ public class AdDaoImpl implements IAdDao {
 			adDto.setRoom(String.valueOf(ad.getNumberOfRooms()));
 			adDto.setPostedOn(ad.getUpdatedOn());
 			adDto.setAllowedTo(ad.getAllowedTo());
+			adDto.setIsActive(ad.getIsActive());
 			adDtoList.add(adDto);
 		}
 		return adDtoList;

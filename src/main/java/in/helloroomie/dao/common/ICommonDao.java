@@ -2,6 +2,7 @@ package in.helloroomie.dao.common;
 
 import in.helloroomie.domain.city.City;
 import in.helloroomie.domain.locality.Locality;
+import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
 
 import java.util.List;
@@ -18,5 +19,5 @@ public interface ICommonDao {
 
 	List<Locality> getLocalityByCity(Long cityId);
 
-	String getCurrentUser(String token);
+	User getCurrentUser(String token);
 }

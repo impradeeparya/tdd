@@ -55,16 +55,11 @@ public class CommonDaoImpl implements ICommonDao {
 	}
 
 	@Override
-	public String getCurrentUser(String token) {
+	public User getCurrentUser(String token) {
 		Criteria userCriteria = createCriteria(User.class);
 		userCriteria.add(Restrictions.eq("token", token));
 		User user = (User) userCriteria.uniqueResult();
-
-		if (null != user) {
-			return StringUtils.capitalize(user.getFname()) + " "
-					+ StringUtils.capitalize(user.getLname());
-		}
-		return null;
+		return user;
 	}
 
 	private Criteria createCriteria(Class className) {
