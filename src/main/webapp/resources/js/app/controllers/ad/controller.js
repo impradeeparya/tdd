@@ -3,7 +3,8 @@
  */
 angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 		'AdController',
-		function($scope, $routeParams, $location, AdServices, UtilServices) {
+		function($scope, $routeParams, $location, AdServices, UtilServices,
+				ngDialog) {
 			$scope.adsList = null;
 			$scope.myAds = null;
 			if ($routeParams.zoneId) {
@@ -35,6 +36,19 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 					if (true == res) {
 						currentUserAds();
 					}
+				});
+			}
+
+			$scope.contactInformationPopup = function(advertiser) {
+				$scope.popupInfo = advertiser;
+				ngDialog.open({
+					template : 'views/ad/_contactInfoPopup.html',
+					className : 'ngdialog-theme-default',
+					showClose : true,
+					closeByEscape : true,
+					closeByDocument : true,
+					name : 'Contact Information',
+					scope : $scope
 				});
 			}
 

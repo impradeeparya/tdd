@@ -24,6 +24,12 @@
 	href="<c:url value="/resources/css/bootstrap/bootstrap-theme.css"/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/main.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/ngDialog/ngDialog.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/ngDialog/ngDialog-theme-default.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/ngDialog/ngDialog-theme-plain.css" />" />
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -93,9 +99,13 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap/dropdown.js" />"></script>
 	<script type="text/javascript"
+		src="<c:url value="/resources/js/bootstrap/modal.js" />"></script>
+	<script type="text/javascript"
 		src="<c:url value="/resources/js/angularJs/angular.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/angularJs/angular-route.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/angularJs/ngDialog.js" />"></script>
 
 	<!-- angularJs files -->
 	<script type="text/javascript"

@@ -125,6 +125,7 @@ public class AdDaoImpl implements IAdDao {
 			adDto.setPostedOn(ad.getUpdatedOn());
 			adDto.setAllowedTo(ad.getAllowedTo());
 			adDto.setIsActive(ad.getIsActive());
+			adDto.setAdvertiser(ad.getUser());
 			adDtoList.add(adDto);
 		}
 		return adDtoList;

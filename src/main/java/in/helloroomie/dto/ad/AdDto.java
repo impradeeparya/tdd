@@ -1,5 +1,7 @@
 package in.helloroomie.dto.ad;
 
+import in.helloroomie.domain.user.User;
+
 import java.util.Date;
 
 /**
@@ -18,6 +20,7 @@ public class AdDto {
 	String rent;
 	String room;
 	Boolean isActive;
+	User advertiser;
 
 	public String getTitle() {
 		return title;
@@ -105,6 +108,14 @@ public class AdDto {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public User getAdvertiser() {
+		return advertiser;
+	}
+
+	public void setAdvertiser(User advertiser) {
+		this.advertiser = advertiser;
 	}
 
 }
