@@ -17,32 +17,33 @@ import javax.transaction.Transactional;
 @Service
 public class AuthServiceImpl implements IAuthService {
 
-    @Autowired
-    private IAuthDao authDao;
+	@Autowired
+	private IAuthDao authDao;
 
-    @Override
-    @Transactional
-    public UserDto authenticateUser(User user) {
-        String userName = user.getEmail();
-        String password = user.getPassword();
-        return prepareUserDTO(authDao.authenticateUser(userName, password));
-    }
+	@Override
+	@Transactional
+	public UserDto authenticateUser(User user) {
+		String userName = user.getEmail();
+		String password = user.getPassword();
+		return prepareUserDTO(authDao.authenticateUser(userName, password));
+	}
 
-    @Override
-    @Transactional
-    public Boolean signupUser(User user) {
-        return authDao.signupUser(user);
-    }
+	@Override
+	@Transactional
+	public Boolean signupUser(User user) {
+		return authDao.signupUser(user);
+	}
 
-    private UserDto prepareUserDTO(User user) {
-        UserDto userDto = new UserDto();
-        if (null != user) {
-            userDto.setIsValidUser(true);
-            userDto.setUserName(StringUtils.capitalize(user.getFname()) + " " + StringUtils.capitalize(user.getLname()));
-            userDto.setUserToken(user.getToken());
-        } else {
-            userDto.setIsValidUser(false);
-        }
-        return userDto;
-    }
+	private UserDto prepareUserDTO(User user) {
+		UserDto userDto = new UserDto();
+		if (null != user) {
+			userDto.setIsValidUser(true);
+			userDto.setUserName(StringUtils.capitalize(user.getFname()) + " "
+					+ StringUtils.capitalize(user.getLname()));
+			userDto.setUserToken(user.getToken());
+		} else {
+			userDto.setIsValidUser(false);
+		}
+		return userDto;
+	}
 }

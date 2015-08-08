@@ -5,6 +5,7 @@ import in.helloroomie.domain.city.City;
 import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
+import in.helloroomie.dto.user.UserDto;
 import in.helloroomie.service.common.ICommonServices;
 
 import java.util.List;
@@ -50,13 +51,27 @@ public class CommonServicesImpl implements ICommonServices {
 
 	@Override
 	@Transactional
-	public String getCurrentUser(String token) {
+	public UserDto getCurrentUser(String token) {
 		User user = commonDao.getCurrentUser(token);
-		if (null == user) {
-			return null;
+
+		if (null != user) {
+			return prepareUserDTO(user);
 		}
-		return StringUtils.capitalize(user.getFname()) + " "
-				+ StringUtils.capitalize(user.getLname());
+		return null;
+	}
+
+	private UserDto prepareUserDTO(User user) {
+		UserDto userDto = new UserDto();
+		if (null != user) {
+			userDto.setId(user.getId());
+			userDto.setUserName(StringUtils.capitalize(user.getFname()) + " "
+					+ StringUtils.capitalize(user.getLname()));
+			userDto.setEmail(user.getEmail());
+			userDto.setContactNumber(user.getNumber());
+		} else {
+			userDto.setIsValidUser(false);
+		}
+		return userDto;
 	}
 
 }

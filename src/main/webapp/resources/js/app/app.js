@@ -28,7 +28,7 @@ angular
 								&& !$rootScope.currentUser) {
 							UtilServices.getCurrentUser().then(function(res) {
 								if (res.data && (res.data != null)) {
-									$rootScope.currentUser = res.data;
+									$rootScope.currentUser = res.data.userName;
 								} else {
 									LocalStorage.remove('token');
 								}

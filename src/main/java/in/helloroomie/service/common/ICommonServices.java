@@ -3,6 +3,7 @@ package in.helloroomie.service.common;
 import in.helloroomie.domain.city.City;
 import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.zone.Zone;
+import in.helloroomie.dto.user.UserDto;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public interface ICommonServices {
 	List<Zone> getZonesByCity(Long cityId);
 
 	List<Locality> getLocalityByZone(Long zoneId);
-	
+
 	List<Locality> getLocalityByCity(Long cityId);
 
-	String getCurrentUser(String token);
+	UserDto getCurrentUser(String token);
 }
