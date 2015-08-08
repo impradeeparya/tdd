@@ -4,6 +4,7 @@ import in.helloroomie.domain.ad.Ad;
 import in.helloroomie.dto.ad.AdDto;
 import in.helloroomie.service.ad.IAdServices;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -47,10 +48,16 @@ public class AdController {
 
 	@RequestMapping(value = "/uploadRoomImages", method = RequestMethod.POST)
 	public @ResponseBody List<Long> getCurrentUserAds(
+			@RequestHeader("Authorization") String token,
 			MultipartHttpServletRequest request) {
 		Iterator<String> itr = request.getFileNames();
 		MultipartFile multipartFile = request.getFile(itr.next());
-		System.out.println("Upload Room Images");
+		byte[] roomImage = null;
+		try {
+			roomImage = multipartFile.getBytes();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
