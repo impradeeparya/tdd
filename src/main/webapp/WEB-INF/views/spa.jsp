@@ -123,6 +123,8 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/app/services/ad/services.js" />"></script>
 	<script type="text/javascript"
+		src="<c:url value="/resources/js/app/directives/ad/directives.js" />"></script>
+	<script type="text/javascript"
 		src="<c:url value="/resources/js/app/controllers/auth/auth.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/app/controllers/auth/controller.js" />"></script>

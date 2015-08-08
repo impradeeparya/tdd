@@ -1,7 +1,8 @@
 /**
  * Created by Pradeep Arya on 7/5/2015.
  */
-angular.module('hr.ad', [ 'hr.ad.controller', 'hr.ad.services' ]).config(
+angular.module('hr.ad',
+		[ 'hr.ad.controller', 'hr.ad.services', 'hr.ad.directives' ]).config(
 		[ '$routeProvider', function($routeProvider) {
 			$routeProvider.when('/ad/search', {
 				controller : 'AdController',

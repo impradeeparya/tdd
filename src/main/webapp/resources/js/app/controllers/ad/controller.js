@@ -63,6 +63,7 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 		function($scope, UtilServices, AdServices) {
 
 			$scope.ad = {};
+			$scope.roomImages;
 
 			$scope.city = {};
 			$scope.zone = {};
@@ -110,19 +111,20 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 				$scope.locality = {};
 			};
 
-			/*
-			 * function uploadFile(adId) { var file = $scope.myFile;
-			 * console.log('file is ' + JSON.stringify(file)); var uploadUrl =
-			 * "/ad/upload/" + adId; fileUpload.uploadFileToUrl(file,
-			 * uploadUrl); };
-			 */
-
 			$scope.postAd = function() {
 				$scope.ad.locality = $scope.locality;
 				console.log($scope.ad);
-				AdServices.postAd($scope.ad).success(function(data) {
-					console.log(data);
-				})
+				console.log($scope.roomImages);
+				var images = new FormData();
+				images.append('file', $scope.roomImages);
+				AdServices.uploadRoomImages(images).success(function(res) {
+					console.log(res)
+					// AdServices.postAd(formData).success(function(data)
+					// {
+					// console.log(data);
+					// })
+				});
+
 			};
 
 		})

@@ -15,6 +15,19 @@ angular.module('hr.ad.services', []).service('AdServices', function($http) {
 		return $http.post("ad/post", ad);
 	}
 
+	this.uploadRoomImages = function(roomImages) {
+		return $http.post('ad/uploadRoomImages', roomImages, {
+
+			withCredentials : false,
+
+			headers : {
+				'Content-Type' : undefined
+			},
+			transformRequest : angular.identity
+
+		});
+	}
+
 	this.getCurrentUserAds = function() {
 		return $http.get("ad/getCurrentUserAds");
 	}
