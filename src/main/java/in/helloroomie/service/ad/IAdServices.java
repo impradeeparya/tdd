@@ -15,6 +15,8 @@ public interface IAdServices {
 
 	List<AdDto> getCurrentUserAds(String token);
 
+	Long postAdImage(String imageName, byte[] imageData);
+
 	Boolean postAd(String token, Ad ad);
 
 	Boolean updateAdStatus(Long adId);

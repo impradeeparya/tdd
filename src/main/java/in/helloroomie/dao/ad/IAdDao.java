@@ -1,6 +1,7 @@
 package in.helloroomie.dao.ad;
 
 import in.helloroomie.domain.ad.Ad;
+import in.helloroomie.domain.ad.Image;
 import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.dto.ad.AdDto;
 
@@ -15,6 +16,8 @@ public interface IAdDao {
 	List<AdDto> getByCityId(List<Zone> zones);
 
 	List<AdDto> getCurrentUserAds(Long userId);
+
+	Long postAdImage(Image adImage);
 
 	Boolean postAd(String token, Ad ad);
 

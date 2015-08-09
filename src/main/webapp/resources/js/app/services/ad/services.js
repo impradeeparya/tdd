@@ -12,6 +12,7 @@ angular.module('hr.ad.services', []).service('AdServices', function($http) {
 	}
 
 	this.postAd = function(ad) {
+		console.log(ad);
 		return $http.post("ad/post", ad);
 	}
 

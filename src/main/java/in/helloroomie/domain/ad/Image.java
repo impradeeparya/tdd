@@ -12,18 +12,18 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "ad_image")
-public class AdImage {
+@Table(name = "image")
+public class Image {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
+	private Long id;
 
 	@Column(name = "image_name")
-	String imageName;
+	private String imageName;
 
 	@Column(name = "image_data")
-	byte[] imageData;
+	private byte[] imageData;
 
 	public Long getId() {
 		return id;

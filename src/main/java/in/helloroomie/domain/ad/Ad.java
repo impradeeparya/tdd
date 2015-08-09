@@ -3,8 +3,18 @@ package in.helloroomie.domain.ad;
 import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.user.User;
 
-import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * Created by Pradeep Arya on 7/6/2015.
@@ -16,31 +26,34 @@ public class Ad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	String title;
-	String description;
-	String rent;
+	private Long id;
+	private String title;
+	private String description;
+	private String rent;
 
 	@Column(name = "rooms")
-	int numberOfRooms;
+	private int numberOfRooms;
 	@Column(name = "allowed_to")
-	String allowedTo;
+	private String allowedTo;
 
 	@OneToOne
 	@JoinColumn(name = "locality_id", referencedColumnName = "id")
-	Locality locality;
+	private Locality locality;
 
 	@OneToOne
 	@JoinColumn(name = "advertiser_id", referencedColumnName = "id")
-	User user;
+	private User user;
 
 	@Column(name = "created_on")
-	Date createdOn;
+	private Date createdOn;
 	@Column(name = "updated_on")
-	Date updatedOn;
+	private Date updatedOn;
 
 	@Column(name = "active")
-	Boolean isActive;
+	private Boolean isActive;
+
+	@OneToMany
+	private List<Image> image;
 
 	public Long getId() {
 		return id;
@@ -128,6 +141,14 @@ public class Ad {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public List<Image> getImage() {
+		return image;
+	}
+
+	public void setImage(List<Image> image) {
+		this.image = image;
 	}
 
 }

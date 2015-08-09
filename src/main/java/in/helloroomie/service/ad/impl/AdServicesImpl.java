@@ -3,6 +3,7 @@ package in.helloroomie.service.ad.impl;
 import in.helloroomie.dao.ad.IAdDao;
 import in.helloroomie.dao.common.ICommonDao;
 import in.helloroomie.domain.ad.Ad;
+import in.helloroomie.domain.ad.Image;
 import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.dto.ad.AdDto;
@@ -58,5 +59,14 @@ public class AdServicesImpl implements IAdServices {
 	@Transactional
 	public Boolean updateAdStatus(Long adId) {
 		return adDao.updateAdStatus(adId);
+	}
+
+	@Override
+	@Transactional
+	public Long postAdImage(String imageName, byte[] imageData) {
+		Image adImage = new Image();
+		adImage.setImageName(imageName);
+		adImage.setImageData(imageData);
+		return adDao.postAdImage(adImage);
 	}
 }

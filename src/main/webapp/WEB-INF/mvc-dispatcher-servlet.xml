@@ -84,6 +84,7 @@
 				<value>in.helloroomie.domain.locality.Locality</value>
 				<value>in.helloroomie.domain.user.User</value>
 				<value>in.helloroomie.domain.ad.Ad</value>
+				<value>in.helloroomie.domain.ad.Image</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

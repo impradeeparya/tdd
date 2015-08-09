@@ -1,6 +1,6 @@
 <div class="jumbotraon col-md-4 col-md-offset-4">
 	<form name="postAdForm" ng-submit="postAd()">
-		<!-- <div class="form-group">
+		<div class="form-group">
 			<label class="sr-only" for="title">Title</label> <input type="text"
 				class="form-control" id="title" ng-model="ad.title"
 				placeholder="Title" required>
@@ -56,12 +56,12 @@
 				required>
 				<option value=''>-- Select a locality --</option>
 			</select>
-		</div> -->
+		</div>
 
 		<div class="form-group">
 			<label class="sr-only" for="file">Room Image</label> <input
 				type="file" class="form-control" id="file" placeholder="Room Image"
-				file-input="roomImages" required>
+				file-input="roomImages" multiple required>
 		</div>
 
 		<button class="btn btn-indigo pull-right">PostIt</button>

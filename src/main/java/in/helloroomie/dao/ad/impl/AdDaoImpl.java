@@ -2,6 +2,7 @@ package in.helloroomie.dao.ad.impl;
 
 import in.helloroomie.dao.ad.IAdDao;
 import in.helloroomie.domain.ad.Ad;
+import in.helloroomie.domain.ad.Image;
 import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.dto.ad.AdDto;
@@ -93,8 +94,17 @@ public class AdDaoImpl implements IAdDao {
 		return true;
 	}
 
+	@Override
+	public Long postAdImage(Image adImage) {
+		return saveAdImage(adImage);
+	}
+
 	private void saveAd(Ad ad) {
 		getCurrentSession().save(ad);
+	}
+
+	private Long saveAdImage(Image adImage) {
+		return (Long) getCurrentSession().save(adImage);
 	}
 
 	private void updateAd(Ad ad) {

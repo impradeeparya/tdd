@@ -5,6 +5,7 @@ import in.helloroomie.dto.ad.AdDto;
 import in.helloroomie.service.ad.IAdServices;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,22 +44,28 @@ public class AdController {
 	@RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Boolean postAd(
 			@RequestHeader("Authorization") String token, @RequestBody Ad ad) {
-		return adServices.postAd(token, ad);
+		System.out.println(ad);
+		return null;
+		// return adServices.postAd(token, ad);
 	}
 
 	@RequestMapping(value = "/uploadRoomImages", method = RequestMethod.POST)
-	public @ResponseBody List<Long> getCurrentUserAds(
-			@RequestHeader("Authorization") String token,
-			MultipartHttpServletRequest request) {
+	public @ResponseBody List<Long> getCurrentUserAds(MultipartHttpServletRequest request) {
+		List<Long> uploadFileIds = new ArrayList<Long>();
 		Iterator<String> itr = request.getFileNames();
-		MultipartFile multipartFile = request.getFile(itr.next());
-		byte[] roomImage = null;
-		try {
-			roomImage = multipartFile.getBytes();
-		} catch (IOException e) {
-			e.printStackTrace();
+
+		while (itr.hasNext()) {
+			MultipartFile multipartFile = request.getFile(itr.next());
+			try {
+				multipartFile.getBytes();
+				uploadFileIds.add(adServices.postAdImage(
+						multipartFile.getOriginalFilename(),
+						multipartFile.getBytes()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		return uploadFileIds;
 	}
 
 	@RequestMapping(value = "/getCurrentUserAds", method = RequestMethod.GET)

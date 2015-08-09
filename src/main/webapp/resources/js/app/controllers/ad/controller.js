@@ -113,16 +113,16 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 
 			$scope.postAd = function() {
 				$scope.ad.locality = $scope.locality;
-				console.log($scope.ad);
-				console.log($scope.roomImages);
 				var images = new FormData();
-				images.append('file', $scope.roomImages);
+				angular.forEach($scope.roomImages, function(image) {
+					images.append(image.name, image);
+				});
 				AdServices.uploadRoomImages(images).success(function(res) {
 					console.log(res)
-					// AdServices.postAd(formData).success(function(data)
-					// {
-					// console.log(data);
-					// })
+					$scope.ad.adImage = res;
+					AdServices.postAd($scope.ad).success(function(data) {
+						console.log(data);
+					})
 				});
 
 			};
