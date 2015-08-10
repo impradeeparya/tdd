@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Pradeep Arya on 7/6/2015.
@@ -27,25 +28,37 @@ public class Ad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@NotNull
 	private String title;
+
+	@NotNull
 	private String description;
+
+	@NotNull
 	private String rent;
 
 	@Column(name = "rooms")
+	@NotNull
 	private int numberOfRooms;
+
+	@NotNull
 	@Column(name = "allowed_to")
 	private String allowedTo;
 
 	@OneToOne
 	@JoinColumn(name = "locality_id", referencedColumnName = "id")
+	@NotNull
 	private Locality locality;
 
 	@OneToOne
 	@JoinColumn(name = "advertiser_id", referencedColumnName = "id")
+	@NotNull
 	private User user;
 
 	@Column(name = "created_on")
 	private Date createdOn;
+	@NotNull
 	@Column(name = "updated_on")
 	private Date updatedOn;
 
@@ -53,6 +66,7 @@ public class Ad {
 	private Boolean isActive;
 
 	@OneToMany
+	@NotNull
 	private List<Image> image;
 
 	public Long getId() {

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Pradeep Arya on 8/8/2015.
@@ -20,9 +21,11 @@ public class Image {
 	private Long id;
 
 	@Column(name = "image_name")
+	@NotNull
 	private String imageName;
 
 	@Column(name = "image_data")
+	@NotNull
 	private byte[] imageData;
 
 	public Long getId() {
