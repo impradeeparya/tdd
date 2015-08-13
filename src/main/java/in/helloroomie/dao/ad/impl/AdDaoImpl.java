@@ -136,6 +136,12 @@ public class AdDaoImpl implements IAdDao {
 			adDto.setAllowedTo(ad.getAllowedTo());
 			adDto.setIsActive(ad.getIsActive());
 			adDto.setAdvertiser(ad.getUser());
+
+			List<byte[]> images = new ArrayList<byte[]>();
+			for (Image image : ad.getImage()) {
+				images.add(image.getImageData());
+			}
+			adDto.setImages(images);
 			adDtoList.add(adDto);
 		}
 		return adDtoList;

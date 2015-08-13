@@ -11,9 +11,11 @@ angular.module('hr.ad.services', []).service('AdServices', function($http) {
 		return $http.post("ad/getByCityId", cityId);
 	}
 
-	this.postAd = function(ad) {
-		console.log(ad);
-		return $http.post("ad/post", ad);
+	this.postAd = function(ad, imageIds) {
+		return $http.post("ad/post", {
+			ad : ad,
+			imageIds : imageIds
+		});
 	}
 
 	this.uploadRoomImages = function(roomImages) {

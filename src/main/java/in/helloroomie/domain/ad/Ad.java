@@ -57,6 +57,7 @@ public class Ad {
 	private User user;
 
 	@Column(name = "created_on")
+	@NotNull
 	private Date createdOn;
 	@NotNull
 	@Column(name = "updated_on")

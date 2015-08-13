@@ -2,6 +2,10 @@ package in.helloroomie.dao.auth.impl;
 
 import in.helloroomie.dao.auth.IAuthDao;
 import in.helloroomie.domain.user.User;
+
+import java.util.Date;
+import java.util.UUID;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,10 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
-
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
 
 /**
  * Created by Pradeep Arya on 7/12/2015.

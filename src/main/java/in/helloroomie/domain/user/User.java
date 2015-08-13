@@ -24,7 +24,6 @@ public class User {
 	String number;
 	@NotNull
 	String password;
-	@NotNull
 	String token;
 
 	public Long getId() {

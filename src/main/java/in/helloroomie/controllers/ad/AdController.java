@@ -2,6 +2,7 @@ package in.helloroomie.controllers.ad;
 
 import in.helloroomie.domain.ad.Ad;
 import in.helloroomie.dto.ad.AdDto;
+import in.helloroomie.dto.ad.AdImageDto;
 import in.helloroomie.service.ad.IAdServices;
 
 import java.io.IOException;
@@ -43,14 +44,16 @@ public class AdController {
 
 	@RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Boolean postAd(
-			@RequestHeader("Authorization") String token, @RequestBody Ad ad) {
-		System.out.println(ad);
-		return null;
-		// return adServices.postAd(token, ad);
+			@RequestHeader("Authorization") String token,
+			@RequestBody AdImageDto adImageDto) {
+		System.out.println(adImageDto);
+		Ad ad = adImageDto.prepareAd();
+		return adServices.postAd(token, ad);
 	}
 
 	@RequestMapping(value = "/uploadRoomImages", method = RequestMethod.POST)
-	public @ResponseBody List<Long> getCurrentUserAds(MultipartHttpServletRequest request) {
+	public @ResponseBody List<Long> getCurrentUserAds(
+			MultipartHttpServletRequest request) {
 		List<Long> uploadFileIds = new ArrayList<Long>();
 		Iterator<String> itr = request.getFileNames();
 

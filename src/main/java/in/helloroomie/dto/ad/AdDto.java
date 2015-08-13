@@ -3,6 +3,7 @@ package in.helloroomie.dto.ad;
 import in.helloroomie.domain.user.User;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Pradeep Arya on 7/7/2015.
@@ -21,6 +22,7 @@ public class AdDto {
 	String room;
 	Boolean isActive;
 	User advertiser;
+	List<byte[]> images;
 
 	public String getTitle() {
 		return title;
@@ -116,6 +118,14 @@ public class AdDto {
 
 	public void setAdvertiser(User advertiser) {
 		this.advertiser = advertiser;
+	}
+
+	public List<byte[]> getImages() {
+		return images;
+	}
+
+	public void setImages(List<byte[]> images) {
+		this.images = images;
 	}
 
 }

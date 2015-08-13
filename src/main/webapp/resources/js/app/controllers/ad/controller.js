@@ -117,13 +117,14 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 				angular.forEach($scope.roomImages, function(image) {
 					images.append(image.name, image);
 				});
-				AdServices.uploadRoomImages(images).success(function(res) {
-					console.log(res)
-					$scope.ad.adImage = res;
-					AdServices.postAd($scope.ad).success(function(data) {
-						console.log(data);
-					})
-				});
+				AdServices.uploadRoomImages(images).success(
+						function(res) {
+							$scope.imageIds = res;
+							AdServices.postAd($scope.ad, $scope.imageIds)
+									.success(function(data) {
+										console.log(data);
+									})
+						});
 
 			};
 
