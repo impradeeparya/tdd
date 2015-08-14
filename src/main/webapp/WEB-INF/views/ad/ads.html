@@ -9,10 +9,13 @@
 		</div>
 		<div class="col-md-4">
 			Image
-			<div class="ad-post row" ng-repeat="ad in adsList">
-				<div class="col-md-10"></div>
+			<div class="row" ng-repeat="ad in adsList">
+				<div class="col-md-6">
+					<div ng-repeat="image in ad.images">
+						<img class="img-responsive"  alt="Responsive image" src="data:image/png;base64,{{image}}">
+					</div>
+				</div>
 			</div>
-
 		</div>
 		<div class="col-md-8">
 			Results

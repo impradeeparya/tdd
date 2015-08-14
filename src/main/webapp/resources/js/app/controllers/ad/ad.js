@@ -11,7 +11,7 @@ angular.module('hr.ad',
 				controller : 'PostAdController',
 				templateUrl : 'views/ad/postAd.html'
 			}).when('/ad/my', {
-				controller : 'AdController',
+				controller : 'MyAdsController',
 				templateUrl : 'views/ad/myAds.html'
 			})
 		} ]);

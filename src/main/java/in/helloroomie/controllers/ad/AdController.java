@@ -52,7 +52,7 @@ public class AdController {
 	}
 
 	@RequestMapping(value = "/uploadRoomImages", method = RequestMethod.POST)
-	public @ResponseBody List<Long> getCurrentUserAds(
+	public @ResponseBody List<Long> uploadRoomImages(
 			MultipartHttpServletRequest request) {
 		List<Long> uploadFileIds = new ArrayList<Long>();
 		Iterator<String> itr = request.getFileNames();
