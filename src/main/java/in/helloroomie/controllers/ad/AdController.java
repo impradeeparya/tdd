@@ -42,6 +42,12 @@ public class AdController {
 		return adServices.getByCityId(cityId);
 	}
 
+	@RequestMapping(value = "/getByLocalityId", method = RequestMethod.POST)
+	public @ResponseBody List<AdDto> getByLocalityId(
+			@RequestBody Long localityId) {
+		return adServices.getByCityId(localityId);
+	}
+
 	@RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody Boolean postAd(
 			@RequestHeader("Authorization") String token,

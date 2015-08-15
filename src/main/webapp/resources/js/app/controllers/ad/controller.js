@@ -9,25 +9,44 @@ angular
 						UtilServices, ngDialog) {
 					$scope.adsList = null;
 					$scope.myAds = null;
-					if ($routeParams.zoneId) {
-						AdServices.getAllZoneAds($routeParams.zoneId).success(
+					$scope.zoneId = $routeParams.zoneId;
+					$scope.cityId = $routeParams.cityId;
+
+					if ($scope.zoneId) {
+
+						getAllZoneAds();
+						getLocalitiesByZone();
+					}
+
+					if ($scope.cityId) {
+						getAllCityAds();
+						getLocaclitiesByCity();
+					}
+
+					function getAllZoneAds() {
+						AdServices.getAllZoneAds($scope.zoneId).success(
 								function(data) {
 									$scope.adsList = data;
 								})
+					}
 
+					function getLocalitiesByZone() {
 						UtilServices.getLocalitiesByZone($routeParams.zoneId)
 								.success(function(data) {
 									$scope.localities = data;
+									console.log($scope.localities)
 								});
 					}
 
-					if ($routeParams.cityId) {
-						AdServices.getAllCityAds($routeParams.cityId).success(
+					function getAllCityAds() {
+						AdServices.getAllCityAds($scope.cityId).success(
 								function(data) {
 									$scope.adsList = data;
 								})
+					}
 
-						UtilServices.getLocalitiesByCity($routeParams.cityId)
+					function getLocaclitiesByCity() {
+						UtilServices.getLocalitiesByCity($scope.cityId)
 								.success(function(data) {
 									$scope.localities = data;
 								});
