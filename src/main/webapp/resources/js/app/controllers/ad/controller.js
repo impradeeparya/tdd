@@ -30,7 +30,6 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 							$scope.localities = data;
 						});
 			}
-			currentUserAds();
 			$scope.updateAdStatus = function(adId) {
 				AdServices.updateAdStatus(adId).success(function(res) {
 					if (true == res) {
@@ -52,13 +51,12 @@ angular.module('hr.ad.controller', [ 'hr.ad.services' ]).controller(
 				});
 			}
 
-			function currentUserAds() {
-				AdServices.getCurrentUserAds().success(function(data) {
-					$scope.myAds = data;
-				})
-			}
+		}).controller('MyAdsController', function($scope, AdServices) {
 
-		}).controller(
+	AdServices.getCurrentUserAds().success(function(data) {
+		$scope.myAds = data;
+	})
+}).controller(
 		'PostAdController',
 		function($scope, UtilServices, AdServices) {
 
