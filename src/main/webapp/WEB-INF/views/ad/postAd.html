@@ -13,7 +13,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="sr-only" for="rent">Rent</label> <input type="text"
+			<label class="sr-only" for="rent">Rent</label> <input type="number"
 				class="form-control" id="rent" ng-model="ad.rent" placeholder="Rent"
 				required>
 		</div>
@@ -62,7 +62,7 @@
 		<div class="form-group">
 			<label class="sr-only" for="file">Room Image</label> <input
 				type="file" class="form-control" id="file" placeholder="Room Image"
-				file-input="roomImages" multiple required>
+				file-input="roomImages" multiple maxlength="4" required>
 		</div>
 
 		<button class="btn btn-indigo pull-right">PostIt</button>
