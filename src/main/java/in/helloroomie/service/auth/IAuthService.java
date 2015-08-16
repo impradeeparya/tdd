@@ -1,6 +1,7 @@
 package in.helloroomie.service.auth;
 
 import in.helloroomie.domain.user.User;
+import in.helloroomie.dto.user.ChangePasswordDto;
 import in.helloroomie.dto.user.UserDto;
 
 /**
@@ -8,7 +9,9 @@ import in.helloroomie.dto.user.UserDto;
  */
 public interface IAuthService {
 
-    UserDto authenticateUser(User user);
+	UserDto authenticateUser(User user);
 
-    Boolean signupUser(User user);
+	Boolean signupUser(User user);
+
+	Boolean updatePassword(String token, ChangePasswordDto changePasswordDto);
 }

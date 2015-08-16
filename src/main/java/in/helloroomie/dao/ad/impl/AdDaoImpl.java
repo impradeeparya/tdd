@@ -1,6 +1,7 @@
 package in.helloroomie.dao.ad.impl;
 
 import in.helloroomie.dao.ad.IAdDao;
+import in.helloroomie.dao.common.ICommonDao;
 import in.helloroomie.domain.ad.Ad;
 import in.helloroomie.domain.ad.Image;
 import in.helloroomie.domain.user.User;
@@ -27,6 +28,9 @@ public class AdDaoImpl implements IAdDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
+
+	@Autowired
+	private ICommonDao commonDao;
 
 	@Override
 	public List<AdDto> getByZoneId(Long zoneId) {
@@ -60,9 +64,7 @@ public class AdDaoImpl implements IAdDao {
 
 		Boolean result = false;
 
-		Criteria userCriteria = createCriteria(User.class);
-		userCriteria.add(Restrictions.eq("token", token));
-		User user = (User) userCriteria.uniqueResult();
+		User user = commonDao.getCurrentUser(token);
 
 		if (null != user) {
 			if (null != ad.getLocality()) {

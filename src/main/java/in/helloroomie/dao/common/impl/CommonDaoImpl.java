@@ -5,14 +5,14 @@ import in.helloroomie.domain.city.City;
 import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
+
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
-
-import java.util.List;
 
 /**
  * Created by Pradeep Arya on 7/3/2015.
@@ -65,4 +65,5 @@ public class CommonDaoImpl implements ICommonDao {
 	private Criteria createCriteria(Class className) {
 		return sessionFactory.getCurrentSession().createCriteria(className);
 	}
+
 }

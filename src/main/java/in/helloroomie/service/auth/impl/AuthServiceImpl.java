@@ -2,8 +2,10 @@ package in.helloroomie.service.auth.impl;
 
 import in.helloroomie.dao.auth.IAuthDao;
 import in.helloroomie.domain.user.User;
+import in.helloroomie.dto.user.ChangePasswordDto;
 import in.helloroomie.dto.user.UserDto;
 import in.helloroomie.service.auth.IAuthService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -45,5 +47,12 @@ public class AuthServiceImpl implements IAuthService {
 			userDto.setIsValidUser(false);
 		}
 		return userDto;
+	}
+
+	@Override
+	@Transactional
+	public Boolean updatePassword(String token,
+			ChangePasswordDto changePasswordDto) {
+		return authDao.updatePassword(token, changePasswordDto);
 	}
 }

@@ -42,9 +42,18 @@ angular
 								});
 					};
 
-				}).controller('UserController',
-				function($scope, $location, UtilServices) {
+				}).controller(
+				'UserController',
+				function($scope, $location, UtilServices, AuthServices) {
+					$scope.passwords = {};
 					UtilServices.getCurrentUser().success(function(data) {
 						$scope.user = data;
 					});
+
+					$scope.updatePassword = function() {
+						AuthServices.updatePassword($scope.passwords).success(
+								function(res) {
+									console.log(res);
+								});
+					}
 				})

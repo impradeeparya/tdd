@@ -129,7 +129,7 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/app/controllers/auth/controller.js" />"></script>
 	<script type="text/javascript"
-		src="<c:url value="/resources/js/app/services/auth/service.js" />"></script>
+		src="<c:url value="/resources/js/app/services/auth/services.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/app/app.js" />"></script>
 </body>
