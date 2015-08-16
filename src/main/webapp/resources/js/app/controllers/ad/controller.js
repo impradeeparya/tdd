@@ -88,27 +88,37 @@ angular
 				'MyAdsController',
 				function($scope, AdServices) {
 
-					$scope.myAds = null;
+					$scope.myAds = [];
+					getCurrentUserAds();
 
-					AdServices.getCurrentUserAds().success(function(data) {
-						$scope.myAds = data;
-					})
+					function getCurrentUserAds() {
+						AdServices.getCurrentUserAds().success(function(data) {
+							$scope.myAds = data;
+						});
+					}
 
 					$scope.updateAdStatus = function(adId) {
 						AdServices
 								.updateAdStatus(adId)
 								.success(
 										function(res) {
+
 											if (true == res) {
+												var updatedAds = angular
+														.copy($scope.myAds);
 												for (var index = 0; index < $scope.myAds.length; index++) {
-													if ($scope.myAds[index].id == adId) {
-														$scope.myAds[index].isActive = !$scope.myAds[index].isActive;
+													if (updatedAds[index].id == adId) {
+														updatedAds[index].isActive = !updatedAds[index].isActive;
 														break;
 													}
 												}
+												angular.copy(updatedAds,
+														$scope.myAds);
 											}
+
 										});
 					}
+
 				}).controller(
 				'PostAdController',
 				function($scope, UtilServices, AdServices) {
