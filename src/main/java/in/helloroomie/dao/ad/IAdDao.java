@@ -15,6 +15,8 @@ public interface IAdDao {
 
 	List<AdDto> getByCityId(List<Zone> zones);
 
+	List<AdDto> getByLocalityId(Long localityId);
+
 	List<AdDto> getCurrentUserAds(Long userId);
 
 	Long postAdImage(Image adImage);

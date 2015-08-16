@@ -13,7 +13,6 @@ angular
 					$scope.cityId = $routeParams.cityId;
 
 					if ($scope.zoneId) {
-
 						getAllZoneAds();
 						getLocalitiesByZone();
 					}
@@ -34,7 +33,6 @@ angular
 						UtilServices.getLocalitiesByZone($routeParams.zoneId)
 								.success(function(data) {
 									$scope.localities = data;
-									console.log($scope.localities)
 								});
 					}
 
@@ -50,6 +48,26 @@ angular
 								.success(function(data) {
 									$scope.localities = data;
 								});
+					}
+
+					$scope.getLocalityAds = function(localityId) {
+
+						if (localityId) {
+							AdServices.getLocalityAds(localityId).success(
+									function(data) {
+										$scope.adsList = data;
+									});
+						} else {
+							if ($scope.zoneId) {
+								getAllZoneAds();
+								getLocalitiesByZone();
+							}
+
+							if ($scope.cityId) {
+								getAllCityAds();
+								getLocaclitiesByCity();
+							}
+						}
 					}
 
 					$scope.contactInformationPopup = function(advertiser) {

@@ -3,8 +3,8 @@
 		<div class="input-group mar-bot-10 col-md-12">
 			<select class="form-control" ng-model="selectedLocality"
 				ng-options="locality as locality.name for locality in localities"
-				ng-change="showLocalityAds">
-				<option value=''>-- Select a locality --</option>
+				ng-change="getLocalityAds(selectedLocality.id)">
+				<option value=''>-- All Localities --</option>
 			</select>
 		</div>
 

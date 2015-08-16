@@ -45,7 +45,7 @@ public class AdController {
 	@RequestMapping(value = "/getByLocalityId", method = RequestMethod.POST)
 	public @ResponseBody List<AdDto> getByLocalityId(
 			@RequestBody Long localityId) {
-		return adServices.getByCityId(localityId);
+		return adServices.getByLocalityId(localityId);
 	}
 
 	@RequestMapping(value = "/post", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

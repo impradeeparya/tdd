@@ -69,4 +69,10 @@ public class AdServicesImpl implements IAdServices {
 		adImage.setImageData(imageData);
 		return adDao.postAdImage(adImage);
 	}
+
+	@Override
+	@Transactional
+	public List<AdDto> getByLocalityId(Long localityId) {
+		return adDao.getByLocalityId(localityId);
+	}
 }

@@ -13,6 +13,8 @@ public interface IAdServices {
 
 	List<AdDto> getByCityId(Long cityId);
 
+	List<AdDto> getByLocalityId(Long localityId);
+
 	List<AdDto> getCurrentUserAds(String token);
 
 	Long postAdImage(String imageName, byte[] imageData);

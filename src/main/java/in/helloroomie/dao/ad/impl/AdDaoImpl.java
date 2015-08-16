@@ -47,6 +47,15 @@ public class AdDaoImpl implements IAdDao {
 	}
 
 	@Override
+	public List<AdDto> getByLocalityId(Long localityId) {
+		Criteria criteria = createCriteria(Ad.class);
+		criteria.createAlias("locality", "l");
+		criteria.add(Restrictions.eq("l.id", localityId));
+		criteria.add(Restrictions.eq("isActive", true));
+		return prepareAdDtoList(criteria.list());
+	}
+
+	@Override
 	public Boolean postAd(String token, Ad ad) {
 
 		Boolean result = false;
