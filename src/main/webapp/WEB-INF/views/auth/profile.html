@@ -3,18 +3,17 @@
 	<div class=" col-md-7 col-md-offset-2">
 		<div class="card hovercard">
 			<div class="card-background"></div>
-			<div class="useravatar img-circle">
-				<img class="img-circle" src="/resources/images/profile/me.jpg">
+			<div class="useravatar">
+				<img alt="" src="/HelloRoomie/resources/images/profile/me.jpg">
 			</div>
 			<div class="card-info">
 				<span class="card-title">{{user.userName}}</span>
-
 			</div>
 		</div>
 		<div class="btn-pref btn-group btn-group-justified btn-group-lg"
 			role="group" aria-label="...">
 			<div class="btn-group" role="group">
-				<button type="button" id="details" class="btn btn-default"
+				<button type="button" id="details" class="btn btn-primary"
 					href="#tab1" data-toggle="tab">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<div class="hidden-xs">Personal Details</div>
@@ -22,7 +21,7 @@
 			</div>
 
 			<div class="btn-group" role="group">
-				<button type="button" id="changePassword" class="btn btn-primary"
+				<button type="button" id="changePassword" class="btn btn-default"
 					href="#tab2" data-toggle="tab">
 					<span class="glyphicon glyphicon-erase" aria-hidden="true"></span>
 					<div class="hidden-xs">Chnage Password</div>
@@ -32,12 +31,12 @@
 
 		<div class="well">
 			<div class="tab-content">
-				<div class="tab-pane fade in " id="tab1">
+				<div class="tab-pane fade in active" id="tab1">
 					<h3>Name : {{user.userName}}</h3>
 					<h3>Email : {{user.email}}</h3>
 					<h3>Contact Number : {{user.contactNumber}}</h3>
 				</div>
-				<div class="tab-pane fade in active" id="tab2">
+				<div class="tab-pane fade in " id="tab2">
 
 					<div class="form-group">
 						<input type="password" class="form-control"
