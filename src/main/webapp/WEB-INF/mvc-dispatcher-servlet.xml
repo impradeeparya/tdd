@@ -25,14 +25,18 @@
 		location="resources/datasource/datasource.properties, resources/mailconfiguration/mailconfig.properties" />
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager" />
 
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+	<!-- For dynamic page mapping -->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/views/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
 
+	<!-- For static page mapping -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
+
+	<!-- First page to open without hitting to controller -->
+	<mvc:view-controller path="/" view-name="/views/spa.html" />
+
 
 	<!-- Configure to plugin JSON as request and response in method handler -->
 	<bean
