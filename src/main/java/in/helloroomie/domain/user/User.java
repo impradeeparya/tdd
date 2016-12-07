@@ -8,77 +8,94 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	@NotNull
-	String fname;
-	@NotNull
-	String lname;
-	@NotNull
-	String email;
-	@NotNull
-	String number;
-	@NotNull
-	String password;
-	String token;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @NotNull
+    @Column(name = "FIRST_NAME")
+    String fname;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getFname() {
-		return fname;
-	}
+    @NotNull
+    @Column(name = "LAST_NAME")
+    String lname;
 
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
 
-	public String getLname() {
-		return lname;
-	}
+    @NotNull
+    @Column(name = "EMAIL")
+    String email;
 
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
 
-	public String getEmail() {
-		return email;
-	}
+    @NotNull
+    @Column(name = "CONTACT_NUMBER")
+    String contactNumber;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
-	public String getNumber() {
-		return number;
-	}
+    @NotNull
+    @Column(name = "PASSWORD")
+    String password;
 
-	public void setNumber(String number) {
-		this.number = number;
-	}
+    @Column(name = "TOKEN")
+    String token;
 
-	public String getPassword() {
-		return password;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getToken() {
-		return token;
-	}
+    public String getFname() {
+        return fname;
+    }
 
-	public void setToken(String token) {
-		this.token = token;
-	}
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

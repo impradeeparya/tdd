@@ -3,167 +3,162 @@ package in.helloroomie.domain.ad;
 import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.user.User;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 /**
  * Created by Pradeep Arya on 7/6/2015.
  */
 
 @Entity
-@Table(name = "ad")
+@Table(name = "AD")
 public class Ad {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private Long id;
 
-	@NotNull
-	private String title;
+    @NotNull
+    @Column(name = "TITLE")
+    private String title;
 
-	@NotNull
-	private String description;
+    @NotNull
+    @Column(name = "DESCRIPTION")
+    private String description;
 
-	@NotNull
-	private String rent;
+    @NotNull
+    @Column(name = "RENT")
+    private String rent;
 
-	@Column(name = "rooms")
-	@NotNull
-	private int numberOfRooms;
+    @Column(name = "ROOMS")
+    @NotNull
+    private int numberOfRooms;
 
-	@NotNull
-	@Column(name = "allowed_to")
-	private String allowedTo;
+    @NotNull
+    @Column(name = "ALLOWED_TO")
+    private String allowedTo;
 
-	@OneToOne
-	@JoinColumn(name = "locality_id", referencedColumnName = "id")
-	@NotNull
-	private Locality locality;
+    @OneToOne
+    @JoinColumn(name = "LOCALITY_ID", referencedColumnName = "ID")
+    @NotNull
+    private Locality locality;
 
-	@OneToOne
-	@JoinColumn(name = "advertiser_id", referencedColumnName = "id")
-	@NotNull
-	private User user;
+    @OneToOne
+    @JoinColumn(name = "ADVERTISER_ID", referencedColumnName = "ID")
+    @NotNull
+    private User user;
 
-	@Column(name = "created_on")
-	@NotNull
-	private Date createdOn;
-	@NotNull
-	@Column(name = "updated_on")
-	private Date updatedOn;
+    @Column(name = "CREATED_ON")
+    @NotNull
+    private Date createdOn;
+    @NotNull
+    @Column(name = "UPDATED_ON")
+    private Date updatedOn;
 
-	@Column(name = "active")
-	private Boolean isActive;
+    @Column(name = "ACTIVE")
+    private Boolean isActive;
 
-	@OneToMany
-	@NotNull
-	private List<Image> image;
+    @OneToMany
+    @NotNull
+    private List<Image> image;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getRent() {
-		return rent;
-	}
+    public String getRent() {
+        return rent;
+    }
 
-	public void setRent(String rent) {
-		this.rent = rent;
-	}
+    public void setRent(String rent) {
+        this.rent = rent;
+    }
 
-	public int getNumberOfRooms() {
-		return numberOfRooms;
-	}
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
 
-	public void setNumberOfRooms(int numberOfRooms) {
-		this.numberOfRooms = numberOfRooms;
-	}
+    public void setNumberOfRooms(int numberOfRooms) {
+        this.numberOfRooms = numberOfRooms;
+    }
 
-	public String getAllowedTo() {
-		return allowedTo;
-	}
+    public String getAllowedTo() {
+        return allowedTo;
+    }
 
-	public void setAllowedTo(String allowedTo) {
-		this.allowedTo = allowedTo;
-	}
+    public void setAllowedTo(String allowedTo) {
+        this.allowedTo = allowedTo;
+    }
 
-	public Date getCreatedOn() {
-		return createdOn;
-	}
+    public Date getCreatedOn() {
+        return createdOn;
+    }
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
 
-	public Date getUpdatedOn() {
-		return updatedOn;
-	}
+    public Date getUpdatedOn() {
+        return updatedOn;
+    }
 
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
-	}
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public Locality getLocality() {
-		return locality;
-	}
+    public Locality getLocality() {
+        return locality;
+    }
 
-	public void setLocality(Locality locality) {
-		this.locality = locality;
-	}
+    public void setLocality(Locality locality) {
+        this.locality = locality;
+    }
 
-	public Boolean getIsActive() {
-		return isActive;
-	}
+    public Boolean getIsActive() {
+        return isActive;
+    }
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
 
-	public List<Image> getImage() {
-		return image;
-	}
+    public List<Image> getImage() {
+        return image;
+    }
 
-	public void setImage(List<Image> image) {
-		this.image = image;
-	}
+    public void setImage(List<Image> image) {
+        this.image = image;
+    }
 
 }

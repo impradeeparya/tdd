@@ -67,7 +67,7 @@ public class CommonServicesImpl implements ICommonServices {
 			userDto.setUserName(StringUtils.capitalize(user.getFname()) + " "
 					+ StringUtils.capitalize(user.getLname()));
 			userDto.setEmail(user.getEmail());
-			userDto.setContactNumber(user.getNumber());
+			userDto.setContactNumber(user.getContactNumber());
 		} else {
 			userDto.setIsValidUser(false);
 		}

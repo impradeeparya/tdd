@@ -10,41 +10,44 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-@Table(name = "locality")
+@Table(name = "LOCALITY")
 public class Locality {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	@NotNull
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private Long id;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "zone_id", referencedColumnName = "id")
-	@NotNull
-	private Zone zone;
+    @NotNull
+    @Column(name = "NAME")
+    private String name;
 
-	public Long getId() {
-		return id;
-	}
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ZONE_ID", referencedColumnName = "ID")
+    @NotNull
+    private Zone zone;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Zone getZone() {
-		return zone;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setZone(Zone zone) {
-		this.zone = zone;
-	}
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
 }
