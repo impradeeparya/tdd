@@ -26,7 +26,7 @@ public class AuthController {
 	private IAuthService authService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public @ResponseBody UserDto login(@RequestBody User user) {
+	public @ResponseBody UserDto login(@RequestBody UserDto user) {
 		return authService.authenticateUser(user);
 	}
 
