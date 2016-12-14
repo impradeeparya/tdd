@@ -22,7 +22,7 @@
 	</mvc:annotation-driven>
 	<context:component-scan base-package="in.helloroomie" />
 	<context:property-placeholder
-		location="classpath:datasource/datasource.properties, classpath:mailconfiguration/mailconfig.properties" />
+		location="classpath:datasource/main/datasource.properties, classpath:mailconfiguration/main/mailconfig.properties" />
 	<tx:annotation-driven transaction-manager="hibernateTransactionManager" />
 
 	<!-- For dynamic page mapping -->

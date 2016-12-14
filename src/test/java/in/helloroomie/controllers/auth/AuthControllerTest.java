@@ -32,7 +32,7 @@ import org.springframework.util.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({"classpath:mvc-dispatcher-servlet-test.xml"})
+@ContextConfiguration({"classpath:applicationconfiguration/test/mvc-dispatcher-servlet-test.xml"})
 public class AuthControllerTest {
 
     @InjectMocks

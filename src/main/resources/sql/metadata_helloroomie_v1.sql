@@ -1,5 +1,3 @@
-USE helloroomie;
-
 INSERT INTO CITY (NAME) VALUES ('New Delhi'), ('Pune'), ('Bengaluru'), ('Hyderabad');
 
 INSERT INTO ZONE (NAME, CITY_ID) VALUES ('North Delhi', 1), ('South Delhi', 1), ('East Delhi', 1), ('West Delhi', 1), ('Central Delhi', 1),
