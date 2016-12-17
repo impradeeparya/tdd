@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd">
 
     <jdbc:embedded-database id="dataSource" type="HSQL">
-        <jdbc:script location="classpath:sql/install_helloroomie_v1.sql"/>
-        <jdbc:script location="classpath:sql/metadata_helloroomie_v1.sql"/>
+        <jdbc:script location="classpath:sql/test/install_helloroomie_v1.sql"/>
+        <jdbc:script location="classpath:sql/test/metadata_helloroomie_v1.sql"/>
     </jdbc:embedded-database>
 
 </beans>

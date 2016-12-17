@@ -1,21 +1,46 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:property-placeholder
+            location="classpath:datasource/test/datasource.properties, classpath:mailconfiguration/main/mailconfig.properties"/>
     <import resource="classpath:applicationconfiguration/test/db-hsqldb-config.xml"/>
 
     <context:component-scan base-package="in.helloroomie"/>
 
-    <context:property-placeholder
-            location="classpath:datasource/test/datasource-test.properties, classpath:mailconfiguration/test/mailconfig-test.properties"/>
-    <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
+    <!--Entity Configuration -->
+    <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          id="sessionFactory">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="annotatedClasses">
+            <list>
+                <value>in.helloroomie.domain.city.City</value>
+                <value>in.helloroomie.domain.zone.Zone</value>
+                <value>in.helloroomie.domain.locality.Locality</value>
+                <value>in.helloroomie.domain.user.User</value>
+                <value>in.helloroomie.domain.ad.Ad</value>
+                <value>in.helloroomie.domain.ad.Image</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!--Transaction Manager -->
+    <bean class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+          id="hibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 
     <!--Email Configuration -->
     <bean id="mailConfig" class="org.springframework.mail.javamail.JavaMailSenderImpl">
@@ -31,4 +56,5 @@
             </props>
         </property>
     </bean>
+
 </beans>

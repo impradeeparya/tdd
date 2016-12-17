@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS helloroomie;
-
 USE helloroomie;
 
 DROP TABLE IF EXISTS AD_IMAGE;
