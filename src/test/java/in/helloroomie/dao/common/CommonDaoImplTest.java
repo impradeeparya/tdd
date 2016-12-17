@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class CommonDaoImplTest {
     ICommonDao commonDao;
 
     @Test
+    @Transactional
     public void shouldReturnAllCities() {
         List<City> cities = commonDao.getAllCities();
         Assert.assertTrue(cities.size() > 0);
