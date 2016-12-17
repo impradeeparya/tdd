@@ -1,9 +1,9 @@
 package in.helloroomie.controllers.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import in.helloroomie.commons.TestDataUtil;
 import in.helloroomie.dto.user.UserDto;
 import in.helloroomie.service.auth.IAuthService;
-import in.helloroomies.commons.TestDataUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

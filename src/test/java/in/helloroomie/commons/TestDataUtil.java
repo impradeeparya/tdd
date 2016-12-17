@@ -1,4 +1,4 @@
-package in.helloroomies.commons;
+package in.helloroomie.commons;
 
 import in.helloroomie.dto.user.UserDto;
 

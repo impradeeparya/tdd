@@ -1,4 +1,4 @@
-INSERT INTO CITY (NAME) VALUES ('New Delhi'), ('Pune'), ('Bengaluru'), ('Hyderabad');
+INSERT INTO CITY (NAME) VALUES ('New Delhi-test'), ('Pune-test'), ('Bengaluru-test'), ('Hyderabad-test');
 
 INSERT INTO ZONE (NAME, CITY_ID) VALUES ('North Delhi', 1), ('South Delhi', 1), ('East Delhi', 1), ('West Delhi', 1), ('Central Delhi', 1),
 ('North Pune', 2), ('South Pune', 2), ('East Pune', 2), ('West Pune', 2), ('Central Pune', 2);
