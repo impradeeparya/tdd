@@ -24,7 +24,7 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public class AdDaoImpl implements IAdDao {
+public class AdDao implements IAdDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -33,7 +33,7 @@ public class AdDaoImpl implements IAdDao {
 	private ICommonDao commonDao;
 
 	@Override
-	public List<AdDto> getByZoneId(Long zoneId) {
+	public List<AdDto> fetchByZoneId(Long zoneId) {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.createAlias("locality", "l");
 		criteria.add(Restrictions.eq("l.zone.id", zoneId));
@@ -42,7 +42,7 @@ public class AdDaoImpl implements IAdDao {
 	}
 
 	@Override
-	public List<AdDto> getByCityId(List<Zone> zones) {
+	public List<AdDto> fetchByCityId(List<Zone> zones) {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.createAlias("locality", "l");
 		criteria.add(Restrictions.in("l.zone", zones));
@@ -51,7 +51,7 @@ public class AdDaoImpl implements IAdDao {
 	}
 
 	@Override
-	public List<AdDto> getByLocalityId(Long localityId) {
+	public List<AdDto> fetchByLocalityId(Long localityId) {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.createAlias("locality", "l");
 		criteria.add(Restrictions.eq("l.id", localityId));
@@ -64,7 +64,7 @@ public class AdDaoImpl implements IAdDao {
 
 		Boolean result = false;
 
-		User user = commonDao.getCurrentUser(token);
+		User user = commonDao.fetchUserByToken(token);
 
 		if (null != user) {
 			if (null != ad.getLocality()) {
@@ -82,7 +82,7 @@ public class AdDaoImpl implements IAdDao {
 	}
 
 	@Override
-	public List<AdDto> getCurrentUserAds(Long userId) {
+	public List<AdDto> fetchCurrentUserAds(Long userId) {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.createAlias("user", "u");
 		criteria.add(Restrictions.eq("u.id", userId));
@@ -90,7 +90,7 @@ public class AdDaoImpl implements IAdDao {
 	}
 
 	@Override
-	public Boolean updateAdStatus(Long adId) {
+	public Boolean updateStatus(Long adId) {
 		Criteria criteria = createCriteria(Ad.class);
 		criteria.add(Restrictions.eq("id", adId));
 		Ad ad = (Ad) criteria.uniqueResult();
@@ -106,7 +106,7 @@ public class AdDaoImpl implements IAdDao {
 	}
 
 	@Override
-	public Long postAdImage(Image adImage) {
+	public Long uploadAdImage(Image adImage) {
 		return saveAdImage(adImage);
 	}
 

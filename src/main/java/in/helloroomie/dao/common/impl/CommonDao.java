@@ -19,19 +19,19 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public class CommonDaoImpl implements ICommonDao {
+public class CommonDao implements ICommonDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public List<City> getAllCities() {
+	public List<City> fetchAllCities() {
 
 		Criteria criteria = createCriteria(City.class);
 		return criteria.list();
 	}
 
 	@Override
-	public List<Zone> getZonesByCity(Long cityId) {
+	public List<Zone> fetchZonesByCity(Long cityId) {
 		Criteria criteria = createCriteria(Zone.class);
 		criteria.createAlias("city", "c");
 		criteria.add(Restrictions.eq("c.id", cityId));
@@ -39,7 +39,7 @@ public class CommonDaoImpl implements ICommonDao {
 	}
 
 	@Override
-	public List<Locality> getLocalityByZone(Long zoneId) {
+	public List<Locality> fetchLocalitiesByZone(Long zoneId) {
 		Criteria criteria = createCriteria(Locality.class);
 		criteria.createAlias("zone", "z");
 		criteria.add(Restrictions.eq("z.id", zoneId));
@@ -47,7 +47,7 @@ public class CommonDaoImpl implements ICommonDao {
 	}
 
 	@Override
-	public List<Locality> getLocalityByCity(Long cityId) {
+	public List<Locality> fetchLocalitiesByCity(Long cityId) {
 		Criteria criteria = createCriteria(Locality.class);
 		criteria.createAlias("zone", "z");
 		criteria.add(Restrictions.eq("z.city.id", cityId));
@@ -55,7 +55,7 @@ public class CommonDaoImpl implements ICommonDao {
 	}
 
 	@Override
-	public User getCurrentUser(String token) {
+	public User fetchUserByToken(String token) {
 		Criteria userCriteria = createCriteria(User.class);
 		userCriteria.add(Restrictions.eq("token", token));
 		User user = (User) userCriteria.uniqueResult();

@@ -6,7 +6,7 @@ import in.helloroomie.domain.locality.Locality;
 import in.helloroomie.domain.user.User;
 import in.helloroomie.domain.zone.Zone;
 import in.helloroomie.dto.user.UserDto;
-import in.helloroomie.service.common.ICommonServices;
+import in.helloroomie.service.common.IStaticDataServices;
 import in.helloroomie.util.HelloRoomieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,39 +19,39 @@ import java.util.List;
  */
 
 @Service
-public class CommonServicesImpl implements ICommonServices {
+public class StaticDataService implements IStaticDataServices {
 
     @Autowired
     private ICommonDao commonDao;
 
     @Override
     @Transactional
-    public List<City> getAllCities() {
-        return commonDao.getAllCities();
+    public List<City> fetchAllCities() {
+        return commonDao.fetchAllCities();
     }
 
     @Override
     @Transactional
-    public List<Zone> getZonesByCity(Long cityId) {
-        return commonDao.getZonesByCity(cityId);
+    public List<Zone> fetchZonesByCity(long cityId) {
+        return commonDao.fetchZonesByCity(cityId);
     }
 
     @Override
     @Transactional
-    public List<Locality> getLocalityByZone(Long zoneId) {
-        return commonDao.getLocalityByZone(zoneId);
+    public List<Locality> fetchLocalitiesByZone(long zoneId) {
+        return commonDao.fetchLocalitiesByZone(zoneId);
     }
 
     @Override
     @Transactional
-    public List<Locality> getLocalityByCity(Long cityId) {
-        return commonDao.getLocalityByCity(cityId);
+    public List<Locality> fetchLocalitiesByCity(long cityId) {
+        return commonDao.fetchLocalitiesByCity(cityId);
     }
 
     @Override
     @Transactional
-    public UserDto getCurrentUser(String token) {
-        User user = commonDao.getCurrentUser(token);
+    public UserDto fetchUserByToken(String token) {
+        User user = commonDao.fetchUserByToken(token);
 
         UserDto userDto = null;
         if (null != user) {

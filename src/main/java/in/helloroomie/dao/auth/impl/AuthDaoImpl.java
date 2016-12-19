@@ -86,7 +86,7 @@ public class AuthDaoImpl implements IAuthDao {
                                   ChangePasswordDto changePasswordDto) {
 
         Boolean result = false;
-        User user = commonDao.getCurrentUser(token);
+        User user = commonDao.fetchUserByToken(token);
 
         if (null != user) {
             if (user.getPassword().equals(changePasswordDto.getOld())) {

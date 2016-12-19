@@ -11,13 +11,13 @@ import java.util.List;
  * Created by Pradeep Arya on 7/3/2015.
  */
 public interface ICommonDao {
-	List<City> getAllCities();
+	List<City> fetchAllCities();
 
-	List<Zone> getZonesByCity(Long cityId);
+	List<Zone> fetchZonesByCity(Long cityId);
 
-	List<Locality> getLocalityByZone(Long zoneId);
+	List<Locality> fetchLocalitiesByZone(Long zoneId);
 
-	List<Locality> getLocalityByCity(Long cityId);
+	List<Locality> fetchLocalitiesByCity(Long cityId);
 
-	User getCurrentUser(String token);
+	User fetchUserByToken(String token);
 }

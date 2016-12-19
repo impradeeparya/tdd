@@ -11,17 +11,17 @@ import java.util.List;
  * Created by Pradeep Arya on 7/6/2015.
  */
 public interface IAdDao {
-	List<AdDto> getByZoneId(Long zoneId);
+	List<AdDto> fetchByZoneId(Long zoneId);
 
-	List<AdDto> getByCityId(List<Zone> zones);
+	List<AdDto> fetchByCityId(List<Zone> zones);
 
-	List<AdDto> getByLocalityId(Long localityId);
+	List<AdDto> fetchByLocalityId(Long localityId);
 
-	List<AdDto> getCurrentUserAds(Long userId);
+	List<AdDto> fetchCurrentUserAds(Long userId);
 
-	Long postAdImage(Image adImage);
+	Long uploadAdImage(Image adImage);
 
 	Boolean postAd(String token, Ad ad);
 
-	Boolean updateAdStatus(Long adId);
+	Boolean updateStatus(Long adId);
 }

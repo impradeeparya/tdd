@@ -25,7 +25,7 @@ public class CommonDaoImplTest extends AbstractDaoTest {
     @Test
     @Transactional
     public void shouldReturnAllCities() {
-        List<City> cities = commonDao.getAllCities();
+        List<City> cities = commonDao.fetchAllCities();
         Assert.assertTrue(cities.size() > 0);
     }
 }

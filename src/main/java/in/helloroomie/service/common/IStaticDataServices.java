@@ -10,14 +10,14 @@ import java.util.List;
 /**
  * Created by Pradeep Arya on 7/3/2015.
  */
-public interface ICommonServices {
-	List<City> getAllCities();
+public interface IStaticDataServices {
+	List<City> fetchAllCities();
 
-	List<Zone> getZonesByCity(Long cityId);
+	List<Zone> fetchZonesByCity(long cityId);
 
-	List<Locality> getLocalityByZone(Long zoneId);
+	List<Locality> fetchLocalitiesByZone(long zoneId);
 
-	List<Locality> getLocalityByCity(Long cityId);
+	List<Locality> fetchLocalitiesByCity(long cityId);
 
-	UserDto getCurrentUser(String token);
+	UserDto fetchUserByToken(String token);
 }
