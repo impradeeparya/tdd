@@ -13,9 +13,9 @@
     <context:component-scan base-package="in.helloroomie"/>
 
     <context:property-placeholder
-            location="classpath:datasource/test/datasource.properties, classpath:mailconfiguration/main/mailconfig.properties"/>
+            location="classpath:configuration/datasource/test/datasource-test.properties, classpath:configuration/mail/main/mailconfig.properties"/>
 
-    <import resource="classpath:applicationconfiguration/test/db-hsqldb-config.xml"/>
+    <import resource="classpath:context/test/db-hsqldb-config.xml"/>
 
     <!--Entity Configuration -->
     <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"

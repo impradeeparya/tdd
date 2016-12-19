@@ -2,24 +2,17 @@ package in.helloroomie.controllers.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import in.helloroomie.commons.TestDataUtil;
+import in.helloroomie.controllers.AbstractControllerTest;
 import in.helloroomie.dto.user.UserDto;
 import in.helloroomie.service.auth.IAuthService;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.Assert;
 
 /**
@@ -30,10 +23,7 @@ import org.springframework.util.Assert;
  * To change this template use File | Settings | File Templates.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ContextConfiguration({"classpath:applicationconfiguration/test/mvc-dispatcher-servlet-test.xml"})
-public class AuthControllerTest {
+public class AuthControllerTest extends AbstractControllerTest {
 
     @InjectMocks
     private AuthController authController;
@@ -41,15 +31,11 @@ public class AuthControllerTest {
     @Mock
     private IAuthService authService;
 
-    private MockMvc mockMvc;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
-    private ObjectMapper objectMapper;
-
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(authController).build();
-        objectMapper = new ObjectMapper();
+    @Override
+    protected Object getTestedController() {
+        return authController;
     }
 
     @Test
@@ -60,7 +46,7 @@ public class AuthControllerTest {
         String requestJson = objectMapper.writeValueAsString(userDto);
 
         Mockito.when(authService.authenticateUser(Mockito.any(UserDto.class))).thenReturn(userDto);
-        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders
+        ResultActions resultActions = getMockMvc().perform(MockMvcRequestBuilders
                 .post("/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson.getBytes()))
