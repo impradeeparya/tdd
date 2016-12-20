@@ -25,25 +25,25 @@ public class AdController {
     @Autowired
     private IAdServices adServices;
 
-    @RequestMapping(value = "/zone/{zoneId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/zone/{zoneId}", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<AdDto> fetchByZoneId(@RequestParam("zoneId") long zoneId) {
+    List<AdDto> fetchByZoneId(@PathVariable("zoneId") long zoneId) {
         return adServices.fetchByZoneId(zoneId);
     }
 
-    @RequestMapping(value = "/city/{cityId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/city/{cityId}", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<AdDto> fetchByCityId(@RequestParam("cityId") long cityId) {
+    List<AdDto> fetchByCityId(@PathVariable("cityId") long cityId) {
         return adServices.fetchByCityId(cityId);
     }
 
-    @RequestMapping(value = "/locality/{localityId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/locality/{localityId}", method = RequestMethod.GET)
     public
     @ResponseBody
     List<AdDto> fetchByLocalityId(
-            @RequestParam("localityId") long localityId) {
+            @PathVariable("localityId") long localityId) {
         return adServices.fetchByLocalityId(localityId);
     }
 
@@ -86,10 +86,10 @@ public class AdController {
         return adServices.fetchCurrentUserAds(token);
     }
 
-    @RequestMapping(value = "/{adId}/{status}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{adId}/{status}", method = RequestMethod.GET)
     public
     @ResponseBody
-    Boolean updateAdStatus(@RequestParam("adId") long adId, @RequestParam("status") char status) {
+    Boolean updateAdStatus(@PathVariable("adId") long adId, @PathVariable("status") char status) {
         return adServices.updateStatus(adId, status);
     }
 

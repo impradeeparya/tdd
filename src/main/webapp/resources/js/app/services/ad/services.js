@@ -1,45 +1,45 @@
 /**
  * Created by Pradeep Arya on 7/5/2015.
  */
-angular.module('hr.ad.services', []).service('AdServices', function($http) {
+angular.module('hr.ad.services', []).service('AdServices', function ($http) {
 
-	this.getAllZoneAds = function(zoneId) {
-		return $http.post("ad/getByZoneId", zoneId);
-	}
+    this.getAllZoneAds = function (zoneId) {
+        return $http.get("ad/zone/" + zoneId);
+    }
 
-	this.getAllCityAds = function(cityId) {
-		return $http.post("ad/getByCityId", cityId);
-	}
+    this.getAllCityAds = function (cityId) {
+        return $http.get("ad/city/" + cityId);
+    }
 
-	this.getLocalityAds = function(localityId) {
-		return $http.post("ad/getByLocalityId", localityId);
-	}
+    this.getLocalityAds = function (localityId) {
+        return $http.get("ad/locality/" + localityId);
+    }
 
-	this.postAd = function(ad, imageIds) {
-		return $http.post("ad/post", {
-			ad : ad,
-			imageIds : imageIds
-		});
-	}
+    this.postAd = function (ad, imageIds) {
+        return $http.post("ad", {
+            ad: ad,
+            imageIds: imageIds
+        });
+    }
 
-	this.uploadRoomImages = function(roomImages) {
-		return $http.post('ad/uploadRoomImages', roomImages, {
+    this.uploadRoomImages = function (roomImages) {
+        return $http.post('ad/uploadRoomImages', roomImages, {
 
-			withCredentials : false,
+            withCredentials: false,
 
-			headers : {
-				'Content-Type' : undefined
-			},
-			transformRequest : angular.identity
+            headers: {
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
 
-		});
-	}
+        });
+    }
 
-	this.getCurrentUserAds = function() {
-		return $http.get("ad/getCurrentUserAds");
-	}
+    this.getCurrentUserAds = function () {
+        return $http.get("ad");
+    }
 
-	this.updateAdStatus = function(adId) {
-		return $http.post("ad/updateAdStatus", adId);
-	}
+    this.updateAdStatus = function (adId, status) {
+        return $http.post("ad/" + adId + "/" + status);
+    }
 })
